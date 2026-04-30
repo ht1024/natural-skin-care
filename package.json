@@ -1,0 +1,20 @@
+{
+  "name": "natural-skin-care-sa-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "One-page React + Express site for Natural Skin Care SA by Norma Perry",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "nodemon server/index.js",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
+    "start": "npm run build && node server/index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "nodemon": "^3.1.7"
+  }
+}
