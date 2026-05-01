@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import heroDesktop from '../assets/hero/hero-desktop.jpg';
+import heroTablet from '../assets/hero/hero-tablet.jpg';
+import heroMobile from '../assets/hero/hero-mobile.jpg';
 
 const rotatingWords = ['Restore', 'Hydrate', 'Glow'];
 
@@ -18,6 +21,11 @@ function Hero() {
 
   return (
     <section id="hero" className="hero section">
+      <picture className="hero-media" aria-hidden="true">
+        <source media="(min-width: 1024px)" srcSet={heroDesktop} />
+        <source media="(min-width: 640px)" srcSet={heroTablet} />
+        <img src={heroMobile} alt="" />
+      </picture>
       <div className="hero-overlay" aria-hidden="true" />
       <div className="hero-content">
         <p className="eyebrow">Natural Skin Care SA by Norma Perry</p>

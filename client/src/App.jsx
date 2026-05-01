@@ -14,6 +14,8 @@ function App() {
         <section id="about" className="section about">
           <div className="content-wrap">
             <h2>About Natural Skin Care SA by Norma Perry</h2>
+            <p>We offer skincare services that focus on natural products and gentle treatments. Our goal is to help your skin look and feel its best using safe, simple, and effective methods.</p>
+            <p>We use high-quality, natural, and organic product lines to deliver safe and effective results. Monthly treatments are recommended to maintain healthy, glowing skin, prevent signs of aging, and keep your skin clean and hydrated.</p>
             <p>
               Natural Skin Care SA by Norma Perry is rooted in gentle, personalized care using thoughtfully selected natural products.
               Every treatment is designed to support healthy skin function, calm sensitivity, and reveal a balanced, luminous complexion.
@@ -31,6 +33,7 @@ function App() {
             <p className="section-intro">
               Explore customized skincare and wellness treatments designed for visible results and restorative self-care.
             </p>
+            <p>Each facial includes deep cleansing, exfoliation, and gentle extractions to leave your skin smooth and clear. A revitalizing mask and light facial massage complete the experience, helping to restore and nourish your skin.</p>
 
             <div className="service-grid" role="list" aria-label="Service offerings">
               {serviceCards.map((service) => (
@@ -69,9 +72,9 @@ function App() {
             <h2>Contact</h2>
             <p>Appointments are available by reservation only.</p>
             <p>
-              Email: <a href="mailto:naturalskincaresa@example.com">naturalskincaresa@example.com</a>
+              Email: <a href="mailto:normacperry@gmail.com">normacperry@gmail.com</a>
               <br />
-              Phone: <a href="tel:+12105551234">(210) 555-1234</a>
+              Phone: <a href="tel:+12108879339">(210) 887-9339</a>
             </p>
             <form className="contact-form" aria-label="Contact form">
               <label htmlFor="name">Name</label>
@@ -93,10 +96,10 @@ function App() {
 
       <footer className="site-footer">
         <p>Natural Skin Care SA by Norma Perry</p>
-        <p>1234 Wellness Avenue, San Antonio, TX</p>
+        <p>18834 Stone Oak Pkwy, Suite 104, San Antonio, TX 78258</p>
         <p>
-          <a href="tel:+12105551234">(210) 555-1234</a> |{' '}
-          <a href="mailto:naturalskincaresa@example.com">naturalskincaresa@example.com</a>
+          <a href="tel:+12108879339">(210) 887-9339</a> |{' '}
+          <a href="mailto:normacperry@gmail.com">normacperry@gmail.com</a>
         </p>
         <p>&copy; {new Date().getFullYear()} Natural Skin Care SA. All rights reserved.</p>
       </footer>

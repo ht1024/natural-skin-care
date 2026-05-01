@@ -42,12 +42,12 @@ export const serviceCards = [
 ];
 
 export const waxingServices = [
-  'Eyebrow Wax',
-  'Lip Wax',
-  'Chin Wax',
-  'Underarm Wax',
   'Bikini Wax',
-  'Brazilian Wax',
-  'Half Leg / Full Leg Wax',
-  'Back / Chest Wax'
+  'Chin Wax',
+  'Eyebrow Wax',
+  'French Bikini Wax',
+  'Full Leg Wax',
+  'Half Leg Wax',
+  'Lip Wax',
+  'Underarm Wax'
 ];
