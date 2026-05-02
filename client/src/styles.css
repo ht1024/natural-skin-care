@@ -68,7 +68,7 @@ textarea:focus-visible {
 .menu-toggle,
 .services-trigger,
 .specials-controls button,
-.contact-form button {
+.marketing-signup__form button {
   border: 0;
   border-radius: 999px;
   background: var(--rose-900);
@@ -81,7 +81,7 @@ textarea:focus-visible {
 .menu-toggle:hover,
 .services-trigger:hover,
 .specials-controls button:hover,
-.contact-form button:hover {
+.marketing-signup__form button:hover {
   transform: translateY(-1px);
 }
 
@@ -255,9 +255,49 @@ textarea:focus-visible {
 }
 
 .about,
-.specials,
-.contact {
+.specials {
   background: rgba(255, 255, 255, 0.72);
+}
+
+.contact {
+  background: linear-gradient(
+    165deg,
+    #d7d0e0 0%,
+    #e3dbe6 42%,
+    #ede6ea 100%
+  );
+}
+
+.contact .content-wrap {
+  color: var(--rose-950);
+}
+
+.contact-layout {
+  display: grid;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.contact-layout__intro {
+  min-width: 0;
+}
+
+.contact-layout__intro p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 400px);
+    gap: 2rem 2.5rem;
+  }
+
+  .marketing-signup {
+    margin: 0;
+    max-width: none;
+    width: 100%;
+    justify-self: stretch;
+  }
 }
 
 .services {
@@ -276,6 +316,10 @@ textarea:focus-visible {
 }
 
 .services h2 {
+  color: var(--rose-950);
+}
+
+.section.contact h2 {
   color: var(--rose-950);
 }
 
@@ -423,19 +467,78 @@ textarea:focus-visible {
   background: var(--rose-600);
 }
 
-.contact-form {
-  margin-top: 1rem;
+.marketing-signup {
+  margin: 0;
+  padding: 1rem 1.15rem;
   max-width: 520px;
+  border-radius: 14px;
+  border: 1px solid rgba(80, 43, 63, 0.18);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.marketing-signup__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  color: var(--rose-950);
+}
+
+.marketing-signup__intro {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  max-width: 55ch;
+}
+
+.marketing-signup__form {
   display: grid;
   gap: 0.5rem;
 }
 
-.contact-form input,
-.contact-form textarea {
+.marketing-signup__form input[type='text'],
+.marketing-signup__form input[type='email'] {
   border: 1px solid rgba(80, 43, 63, 0.3);
   border-radius: 10px;
   padding: 0.6rem 0.7rem;
   font: inherit;
+}
+
+.marketing-signup__consent {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.marketing-signup__consent input {
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.marketing-signup__form button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.contact-form-feedback {
+  margin: 0;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.contact-form-feedback--success {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(80, 43, 63, 0.2);
+  color: var(--rose-950);
+}
+
+.contact-form-feedback--error {
+  background: rgba(127, 42, 86, 0.12);
+  border: 1px solid rgba(127, 42, 86, 0.35);
+  color: var(--rose-950);
 }
 
 .site-footer {

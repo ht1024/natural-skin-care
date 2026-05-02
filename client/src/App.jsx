@@ -1,10 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MegaMenu from './components/MegaMenu';
 import Hero from './components/Hero';
 import SpecialsCarousel from './components/SpecialsCarousel';
 import { serviceCards, waxingServices } from './data/services';
 
 function App() {
+  const [marketingStatus, setMarketingStatus] = useState('idle');
+  const [marketingError, setMarketingError] = useState('');
+
+  async function handleMarketingSubmit(event) {
+    event.preventDefault();
+    setMarketingError('');
+    setMarketingStatus('sending');
+
+    const form = event.currentTarget;
+    const consentChecked = form.querySelector('input[name="marketingConsent"]')?.checked === true;
+
+    const data = {
+      email: form.marketingEmail.value,
+      firstName: form.marketingFirstName.value,
+      consent: consentChecked
+    };
+
+    try {
+      const response = await fetch('/api/marketing-subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setMarketingStatus('error');
+        setMarketingError(payload.error || 'Something went wrong. Please try again.');
+        return;
+      }
+
+      setMarketingStatus('success');
+      form.reset();
+    } catch {
+      setMarketingStatus('error');
+      setMarketingError('Could not reach the server. Try again later or use the email link above.');
+    }
+  }
+
   return (
     <>
       <MegaMenu />
@@ -13,9 +52,9 @@ function App() {
 
         <section id="about" className="section about">
           <div className="content-wrap">
-            <h2>About Natural Skin Care SA by Norma Perry</h2>
-            <p>We offer skincare services that focus on natural products and gentle treatments. Our goal is to help your skin look and feel its best using safe, simple, and effective methods.</p>
-            <p>We use high-quality, natural, and organic product lines to deliver safe and effective results. Monthly treatments are recommended to maintain healthy, glowing skin, prevent signs of aging, and keep your skin clean and hydrated.</p>
+            <h2>Natural Skin Care SA by Norma Perry</h2>
+            {/* <p>We offer skincare services that focus on natural products and gentle treatments. Our goal is to help your skin look and feel its best using safe, simple, and effective methods.</p>
+            <p>We use high-quality, natural, and organic product lines to deliver safe and effective results. Monthly treatments are recommended to maintain healthy, glowing skin, prevent signs of aging, and keep your skin clean and hydrated.</p> */}
             <p>
               Natural Skin Care SA by Norma Perry is rooted in gentle, personalized care using thoughtfully selected natural products.
               Every treatment is designed to support healthy skin function, calm sensitivity, and reveal a balanced, luminous complexion.
@@ -69,27 +108,69 @@ function App() {
 
         <section id="contact" className="section contact">
           <div className="content-wrap">
-            <h2>Contact</h2>
-            <p>Appointments are available by reservation only.</p>
-            <p>
-              Email: <a href="mailto:normacperry@gmail.com">normacperry@gmail.com</a>
-              <br />
-              Phone: <a href="tel:+12108879339">(210) 887-9339</a>
-            </p>
-            <form className="contact-form" aria-label="Contact form">
-              <label htmlFor="name">Name</label>
-              <input id="name" name="name" type="text" autoComplete="name" />
+            <div className="contact-layout">
+              <div className="contact-layout__intro">
+                <h2>Contact</h2>
+                <p>Appointments are available by reservation only.</p>
+                <p>
+                  Email: <a href="mailto:normacperry@gmail.com">normacperry@gmail.com</a>
+                  <br />
+                  Phone: <a href="tel:+12108879339">(210) 887-9339</a>
+                </p>
+              </div>
 
-              <label htmlFor="email">Email</label>
-              <input id="email" name="email" type="email" autoComplete="email" />
+              <div className="marketing-signup">
+                <h3 className="marketing-signup__title">Email list</h3>
+                <p className="marketing-signup__intro">
+                  Get occasional updates on specials, seasonal treatments, and skincare tips.
+                </p>
+                <form
+                  className="marketing-signup__form"
+                  aria-label="Marketing email signup"
+                  onSubmit={handleMarketingSubmit}
+                >
+                  <label htmlFor="marketingFirstName">First name (optional)</label>
+                  <input
+                    id="marketingFirstName"
+                    name="marketingFirstName"
+                    type="text"
+                    autoComplete="given-name"
+                  />
 
-              <label htmlFor="message">Message</label>
-              <textarea id="message" name="message" rows="4" />
+                  <label htmlFor="marketingEmail">Email</label>
+                  <input
+                    id="marketingEmail"
+                    name="marketingEmail"
+                    type="email"
+                    autoComplete="email"
+                    required
+                  />
 
-              <button type="submit" className="btn btn-primary">
-                Send Message
-              </button>
-            </form>
+                  <label className="marketing-signup__consent">
+                    <input type="checkbox" name="marketingConsent" value="yes" required />
+                    <span>
+                      I agree to receive occasional marketing emails about specials and studio news. I can unsubscribe
+                      anytime.
+                    </span>
+                  </label>
+
+                  {marketingStatus === 'success' && (
+                    <p className="contact-form-feedback contact-form-feedback--success" role="status">
+                      You&apos;re on the list—watch your inbox for specials and skincare tips.
+                    </p>
+                  )}
+                  {marketingStatus === 'error' && marketingError && (
+                    <p className="contact-form-feedback contact-form-feedback--error" role="alert">
+                      {marketingError}
+                    </p>
+                  )}
+
+                  <button type="submit" className="btn btn-primary" disabled={marketingStatus === 'sending'}>
+                    {marketingStatus === 'sending' ? 'Joining…' : 'Subscribe'}
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </section>
       </main>

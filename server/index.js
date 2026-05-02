@@ -7,8 +7,42 @@ const PORT = process.env.PORT || 4000;
 const clientDistPath = path.resolve(__dirname, '../client/dist');
 
 app.use(express.json());
-app.use('/api', (_req, res) => {
+
+app.get('/api', (_req, res) => {
   res.json({ status: 'ok', message: 'API is ready for future endpoints.' });
+});
+
+app.post('/api/marketing-subscribe', (req, res) => {
+  const { email, firstName, consent } = req.body || {};
+  const trimmedEmail = typeof email === 'string' ? email.trim() : '';
+  const trimmedFirstName = typeof firstName === 'string' ? firstName.trim() : '';
+
+  if (!trimmedEmail) {
+    return res.status(400).json({ ok: false, error: 'Please enter your email address.' });
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+    return res.status(400).json({ ok: false, error: 'Please enter a valid email address.' });
+  }
+
+  if (consent !== true) {
+    return res.status(400).json({
+      ok: false,
+      error: 'Please confirm you agree to receive marketing emails.'
+    });
+  }
+
+  console.log('[marketing subscribe]', {
+    email: trimmedEmail,
+    firstName: trimmedFirstName || null,
+    consent: true,
+    subscribedAt: new Date().toISOString()
+  });
+
+  res.json({
+    ok: true,
+    message: "You're on the list—watch your inbox for specials and skincare tips."
+  });
 });
 
 const indexPath = path.join(clientDistPath, 'index.html');
