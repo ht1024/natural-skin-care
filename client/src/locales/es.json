@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Natural Skin Care SA by Norma Perry",
+    "description": "Natural Skin Care SA by Norma Perry ofrece faciales y servicios de cuidado de la piel con cita previa, usando productos suaves y naturales."
+  },
+  "nav": {
+    "ariaPrimary": "Navegacion principal",
+    "brand": "Natural Skin Care SA",
+    "menu": "Menu",
+    "services": "Servicios",
+    "servicesAria": "Menu de servicios",
+    "language": "Idioma",
+    "home": "Inicio",
+    "about": "Nosotros",
+    "specials": "Promociones",
+    "contact": "Contacto",
+    "facials": "Faciales",
+    "advancedCare": "Cuidado avanzado",
+    "wellnessWaxing": "Bienestar y depilacion",
+    "bookAppointment": "Reservar cita"
+  },
+  "hero": {
+    "eyebrow": "Natural Skin Care SA by Norma Perry",
+    "headingPrefix": "Rituales elevados para",
+    "word1": "restaurar",
+    "word2": "hidratar",
+    "word3": "iluminar",
+    "body": "Experiencias de cuidado de la piel naturales y delicadas, adaptadas a tu rutina mensual de bienestar y a tus metas de piel a largo plazo.",
+    "ctaServices": "Ver servicios",
+    "ctaContact": "Reservar cita"
+  },
+  "about": {
+    "heading": "Natural Skin Care SA by Norma Perry",
+    "p1": "Natural Skin Care SA by Norma Perry se basa en un cuidado personalizado y delicado, con productos naturales cuidadosamente seleccionados. Cada tratamiento esta disenado para apoyar la salud de tu piel, calmar la sensibilidad y revelar un cutis equilibrado y luminoso.",
+    "p2": "Las sesiones mensuales ayudan a mantener el progreso, prevenir acumulacion y conservar tu piel fresca todo el ano. Norma combina tecnicas profesionales con un ambiente relajante para apoyar tanto la salud de la piel como tu bienestar."
+  },
+  "services": {
+    "heading": "Servicios",
+    "intro": "Explora tratamientos personalizados de piel y bienestar, disenados para resultados visibles y autocuidado restaurador.",
+    "overview": "Cada facial incluye limpieza profunda, exfoliacion y extracciones suaves para dejar la piel lisa y limpia. Una mascarilla revitalizante y un masaje facial ligero completan la experiencia para restaurar y nutrir tu piel.",
+    "ariaOfferings": "Lista de servicios",
+    "waxingHeading": "Servicios de depilacion",
+    "cards": {
+      "expressFacial": {
+        "title": "Facial express",
+        "duration": "45 min",
+        "description": "Una renovacion enfocada que limpia profundamente y devuelve luminosidad en menos de una hora."
+      },
+      "deepCleansing": {
+        "title": "Facial de limpieza profunda",
+        "duration": "90 min",
+        "description": "Tratamiento restaurador que elimina congestion, hidrata y apoya el equilibrio saludable de la piel."
+      },
+      "deluxeAntiAging": {
+        "title": "Deluxe antiedad",
+        "duration": "2 h",
+        "description": "Ritual antiedad completo con hidratacion en capas, efecto lifting y suavizado de la piel."
+      },
+      "goldAntiAging": {
+        "title": "Facial antiedad Gold",
+        "duration": "90 min",
+        "description": "Tratamiento de lujo para iluminar y mejorar firmeza, textura y luminosidad."
+      },
+      "lamprobe": {
+        "title": "LamProbe",
+        "duration": "Variable",
+        "description": "Tratamiento de precision para irregularidades menores de la piel con enfoque en la comodidad."
+      },
+      "faceNeckMicrocurrent": {
+        "title": "Lifting facial y microcorriente de cuello",
+        "duration": "1 h",
+        "description": "Estimulo de microcorriente para una piel con apariencia mas tonificada y elevada en rostro y cuello."
+      },
+      "bodyMicrocurrentCupping": {
+        "title": "Tratamiento corporal de microcorriente y ventosas",
+        "duration": "1 h",
+        "description": "Sesion corporal para apoyar circulacion, tono y relajacion despues del tratamiento."
+      },
+      "reflexology": {
+        "title": "Reflexologia",
+        "duration": "30 min",
+        "description": "Tratamiento de pies para aliviar estres y apoyar el bienestar integral."
+      }
+    },
+    "waxingItems": {
+      "bikini": "Depilacion bikini",
+      "chin": "Depilacion de barbilla",
+      "eyebrow": "Depilacion de cejas",
+      "frenchBikini": "Depilacion bikini frances",
+      "fullLeg": "Depilacion de pierna completa",
+      "halfLeg": "Depilacion de media pierna",
+      "lip": "Depilacion de labio",
+      "underarm": "Depilacion de axilas"
+    }
+  },
+  "specials": {
+    "heading": "Promociones",
+    "intro": "Las promociones se actualizan regularmente segun objetivos de temporada y disponibilidad de citas. Actualmente se muestran promociones de ejemplo y pronto se reemplazaran con ofertas actuales de Norma.",
+    "ariaCarousel": "Promociones actuales",
+    "ariaNav": "Navegacion de promociones",
+    "prev": "Promocion anterior",
+    "next": "Siguiente promocion",
+    "goTo": "Ir a {{title}}",
+    "seed": {
+      "seasonalGlow": {
+        "title": "Promocion brillo de temporada",
+        "details": "Oferta de ejemplo: Ahorra en un Facial de limpieza profunda + depilacion de cejas este mes.",
+        "cta": "Contacta a Norma para confirmar precios actuales"
+      },
+      "newClient": {
+        "title": "Bienvenida para clientes nuevos",
+        "details": "Oferta de ejemplo: Las personas nuevas reciben un extra de hidratacion.",
+        "cta": "Menciona esta promocion al reservar"
+      },
+      "wellnessReset": {
+        "title": "Paquete reinicio de bienestar",
+        "details": "Oferta de ejemplo: Combina reflexologia con un facial para una relajacion total.",
+        "cta": "Pregunta por horarios disponibles"
+      }
+    }
+  },
+  "contact": {
+    "heading": "Contacto",
+    "appointments": "Las citas estan disponibles solo con reservacion.",
+    "emailLabel": "Correo:",
+    "phoneLabel": "Telefono:",
+    "emailListTitle": "Lista de correo",
+    "emailListIntro": "Recibe actualizaciones ocasionales sobre promociones, tratamientos de temporada y consejos de cuidado de la piel.",
+    "signupAria": "Registro a correos de promociones",
+    "firstNameLabel": "Nombre (opcional)",
+    "emailInputLabel": "Correo",
+    "consent": "Acepto recibir correos ocasionales sobre promociones y novedades del estudio. Puedo cancelar mi suscripcion cuando quiera.",
+    "success": "Ya estas en la lista. Revisa tu correo para promociones y consejos de cuidado de la piel.",
+    "submitIdle": "Suscribirme",
+    "submitSending": "Registrando...",
+    "fallbackError": "Algo salio mal. Intentalo de nuevo.",
+    "offlineError": "No se pudo conectar al servidor. Intentalo mas tarde o usa el enlace de correo."
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  }
+}

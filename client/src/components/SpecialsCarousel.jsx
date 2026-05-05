@@ -1,25 +1,28 @@
 import React, { useEffect, useMemo, useState } from 'react';
-
-const specialsSeed = [
-  {
-    title: 'Seasonal Glow Special',
-    details: 'Placeholder offer: Save on a Deep Cleansing Facial + brow wax combo this month.',
-    cta: 'Contact Norma to confirm current pricing'
-  },
-  {
-    title: 'New Client Welcome',
-    details: 'Placeholder offer: First-time guests receive an add-on hydration boost.',
-    cta: 'Mention this special during booking'
-  },
-  {
-    title: 'Wellness Reset Package',
-    details: 'Placeholder offer: Bundle reflexology with a facial treatment for total relaxation.',
-    cta: 'Ask about available appointment times'
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 function SpecialsCarousel() {
-  const specials = useMemo(() => specialsSeed, []);
+  const { t } = useTranslation();
+  const specials = useMemo(
+    () => [
+      {
+        title: t('specials.seed.seasonalGlow.title'),
+        details: t('specials.seed.seasonalGlow.details'),
+        cta: t('specials.seed.seasonalGlow.cta')
+      },
+      {
+        title: t('specials.seed.newClient.title'),
+        details: t('specials.seed.newClient.details'),
+        cta: t('specials.seed.newClient.cta')
+      },
+      {
+        title: t('specials.seed.wellnessReset.title'),
+        details: t('specials.seed.wellnessReset.details'),
+        cta: t('specials.seed.wellnessReset.cta')
+      }
+    ],
+    [t]
+  );
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -31,7 +34,7 @@ function SpecialsCarousel() {
   }, [specials.length]);
 
   return (
-    <div className="specials-carousel" aria-roledescription="carousel" aria-label="Current specials">
+    <div className="specials-carousel" aria-roledescription="carousel" aria-label={t('specials.ariaCarousel')}>
       <div className="specials-slides">
         {specials.map((special, index) => (
           <article
@@ -46,11 +49,11 @@ function SpecialsCarousel() {
         ))}
       </div>
 
-      <div className="specials-controls" aria-label="Specials navigation">
+      <div className="specials-controls" aria-label={t('specials.ariaNav')}>
         <button
           type="button"
           onClick={() => setActiveIndex((activeIndex - 1 + specials.length) % specials.length)}
-          aria-label="Previous special"
+          aria-label={t('specials.prev')}
         >
           &#8592;
         </button>
@@ -60,7 +63,7 @@ function SpecialsCarousel() {
               key={special.title}
               type="button"
               className={index === activeIndex ? 'dot active' : 'dot'}
-              aria-label={`Go to ${special.title}`}
+              aria-label={t('specials.goTo', { title: special.title })}
               aria-current={index === activeIndex ? 'true' : 'false'}
               onClick={() => setActiveIndex(index)}
             />
@@ -69,7 +72,7 @@ function SpecialsCarousel() {
         <button
           type="button"
           onClick={() => setActiveIndex((activeIndex + 1) % specials.length)}
-          aria-label="Next special"
+          aria-label={t('specials.next')}
         >
           &#8594;
         </button>

@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Natural Skin Care SA by Norma Perry",
+    "description": "Natural Skin Care SA by Norma Perry offers appointment-only facial and skincare services with gentle, natural products."
+  },
+  "nav": {
+    "ariaPrimary": "Primary navigation",
+    "brand": "Natural Skin Care SA",
+    "menu": "Menu",
+    "services": "Services",
+    "servicesAria": "Services menu",
+    "language": "Language",
+    "home": "Home",
+    "about": "About",
+    "specials": "Specials",
+    "contact": "Contact",
+    "facials": "Facials",
+    "advancedCare": "Advanced Care",
+    "wellnessWaxing": "Wellness & Waxing",
+    "bookAppointment": "Book Appointment"
+  },
+  "hero": {
+    "eyebrow": "Natural Skin Care SA by Norma Perry",
+    "headingPrefix": "Elevated Skin Rituals to",
+    "word1": "Restore",
+    "word2": "Hydrate",
+    "word3": "Glow",
+    "body": "Gentle, natural skincare experiences tailored to your monthly wellness routine and long-term skin goals.",
+    "ctaServices": "View Services",
+    "ctaContact": "Book Appointment"
+  },
+  "about": {
+    "heading": "Natural Skin Care SA by Norma Perry",
+    "p1": "Natural Skin Care SA by Norma Perry is rooted in gentle, personalized care using thoughtfully selected natural products. Every treatment is designed to support healthy skin function, calm sensitivity, and reveal a balanced, luminous complexion.",
+    "p2": "Monthly skincare sessions help maintain progress, prevent buildup, and keep your skin looking refreshed all year long. Norma combines professional techniques with a relaxing spa atmosphere so each visit supports both skin health and stress relief."
+  },
+  "services": {
+    "heading": "Services",
+    "intro": "Explore customized skincare and wellness treatments designed for visible results and restorative self-care.",
+    "overview": "Each facial includes deep cleansing, exfoliation, and gentle extractions to leave your skin smooth and clear. A revitalizing mask and light facial massage complete the experience, helping to restore and nourish your skin.",
+    "ariaOfferings": "Service offerings",
+    "waxingHeading": "Waxing Services",
+    "cards": {
+      "expressFacial": {
+        "title": "Express Facial",
+        "duration": "45 mins",
+        "description": "A focused refresh that deeply cleanses and revives your glow in under an hour."
+      },
+      "deepCleansing": {
+        "title": "Deep Cleansing Facial",
+        "duration": "90 mins",
+        "description": "A restorative treatment that clears congestion, hydrates skin, and supports healthy balance."
+      },
+      "deluxeAntiAging": {
+        "title": "Deluxe Anti-Aging",
+        "duration": "2 hrs",
+        "description": "A complete age-support ritual with layered hydration, lift, and skin-smoothing care."
+      },
+      "goldAntiAging": {
+        "title": "Gold Anti-Aging Facial",
+        "duration": "90 mins",
+        "description": "A luxurious brightening treatment designed to improve firmness, texture, and radiance."
+      },
+      "lamprobe": {
+        "title": "LamProbe",
+        "duration": "Varies",
+        "description": "A precision treatment to target minor skin irregularities with comfort-focused care."
+      },
+      "faceNeckMicrocurrent": {
+        "title": "Face Lifting & Neck Microcurrent",
+        "duration": "1 hr",
+        "description": "Microcurrent stimulation for toned, lifted-looking skin across face and neck."
+      },
+      "bodyMicrocurrentCupping": {
+        "title": "Microcurrent & Cupping Body Treatment",
+        "duration": "1 hr",
+        "description": "A body-focused session to support circulation, tone, and post-treatment relaxation."
+      },
+      "reflexology": {
+        "title": "Reflexology",
+        "duration": "30 mins",
+        "description": "A grounding foot treatment designed to ease stress and support whole-body wellness."
+      }
+    },
+    "waxingItems": {
+      "bikini": "Bikini Wax",
+      "chin": "Chin Wax",
+      "eyebrow": "Eyebrow Wax",
+      "frenchBikini": "French Bikini Wax",
+      "fullLeg": "Full Leg Wax",
+      "halfLeg": "Half Leg Wax",
+      "lip": "Lip Wax",
+      "underarm": "Underarm Wax"
+    }
+  },
+  "specials": {
+    "heading": "Specials",
+    "intro": "Specials are refreshed regularly based on seasonal skincare goals and appointment availability. Placeholder promotions are currently shown and will be replaced with Norma's current offers.",
+    "ariaCarousel": "Current specials",
+    "ariaNav": "Specials navigation",
+    "prev": "Previous special",
+    "next": "Next special",
+    "goTo": "Go to {{title}}",
+    "seed": {
+      "seasonalGlow": {
+        "title": "Seasonal Glow Special",
+        "details": "Placeholder offer: Save on a Deep Cleansing Facial + brow wax combo this month.",
+        "cta": "Contact Norma to confirm current pricing"
+      },
+      "newClient": {
+        "title": "New Client Welcome",
+        "details": "Placeholder offer: First-time guests receive an add-on hydration boost.",
+        "cta": "Mention this special during booking"
+      },
+      "wellnessReset": {
+        "title": "Wellness Reset Package",
+        "details": "Placeholder offer: Bundle reflexology with a facial treatment for total relaxation.",
+        "cta": "Ask about available appointment times"
+      }
+    }
+  },
+  "contact": {
+    "heading": "Contact",
+    "appointments": "Appointments are available by reservation only.",
+    "emailLabel": "Email:",
+    "phoneLabel": "Phone:",
+    "emailListTitle": "Email list",
+    "emailListIntro": "Get occasional updates on specials, seasonal treatments, and skincare tips.",
+    "signupAria": "Marketing email signup",
+    "firstNameLabel": "First name (optional)",
+    "emailInputLabel": "Email",
+    "consent": "I agree to receive occasional marketing emails about specials and studio news. I can unsubscribe anytime.",
+    "success": "You're on the list. Watch your inbox for specials and skincare tips.",
+    "submitIdle": "Subscribe",
+    "submitSending": "Joining...",
+    "fallbackError": "Something went wrong. Please try again.",
+    "offlineError": "Could not reach the server. Try again later or use the email link above."
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

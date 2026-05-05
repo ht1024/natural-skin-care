@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import heroDesktop from '../assets/hero/hero-desktop.jpg';
 import heroTablet from '../assets/hero/hero-tablet.jpg';
 import heroMobile from '../assets/hero/hero-mobile.jpg';
 
-const rotatingWords = ['Restore', 'Hydrate', 'Glow'];
-
 function Hero() {
+  const { t, i18n } = useTranslation();
+  const rotatingWords = useMemo(() => [t('hero.word1'), t('hero.word2'), t('hero.word3')], [t, i18n.language]);
   const [activeWord, setActiveWord] = useState(rotatingWords[0]);
+
+  useEffect(() => {
+    setActiveWord(rotatingWords[0]);
+  }, [i18n.language]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,7 +22,7 @@ function Hero() {
     }, 2200);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [rotatingWords]);
 
   return (
     <section id="hero" className="hero section">
@@ -28,19 +33,17 @@ function Hero() {
       </picture>
       <div className="hero-overlay" aria-hidden="true" />
       <div className="hero-content">
-        <p className="eyebrow">Natural Skin Care SA by Norma Perry</p>
+        <p className="eyebrow">{t('hero.eyebrow')}</p>
         <h1>
-          Elevated Skin Rituals to <span className="hero-word">{activeWord}</span>
+          {t('hero.headingPrefix')} <span className="hero-word">{activeWord}</span>
         </h1>
-        <p>
-          Gentle, natural skincare experiences tailored to your monthly wellness routine and long-term skin goals.
-        </p>
+        <p>{t('hero.body')}</p>
         <div className="hero-cta-group">
           <a className="btn btn-primary" href="#services">
-            View Services
+            {t('hero.ctaServices')}
           </a>
           <a className="btn btn-secondary" href="#contact">
-            Book Appointment
+            {t('hero.ctaContact')}
           </a>
         </div>
       </div>

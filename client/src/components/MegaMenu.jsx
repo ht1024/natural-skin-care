@@ -1,43 +1,43 @@
 import React, { useEffect, useRef, useState } from 'react';
-
-const topLinks = [
-  { href: '#hero', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#specials', label: 'Specials' },
-  { href: '#contact', label: 'Contact' }
-];
-
-const serviceColumns = [
-  {
-    heading: 'Facials',
-    links: [
-      { href: '#services', label: 'Express Facial' },
-      { href: '#services', label: 'Deep Cleansing Facial' },
-      { href: '#services', label: 'Deluxe Anti-Aging' }
-    ]
-  },
-  {
-    heading: 'Advanced Care',
-    links: [
-      { href: '#services', label: 'Gold Anti-Aging' },
-      { href: '#services', label: 'LamProbe' },
-      { href: '#services', label: 'Microcurrent Treatments' }
-    ]
-  },
-  {
-    heading: 'Wellness & Waxing',
-    links: [
-      { href: '#services', label: 'Reflexology' },
-      { href: '#services', label: 'Waxing Services' },
-      { href: '#contact', label: 'Book Appointment' }
-    ]
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 function MegaMenu() {
+  const { t, i18n } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const navRef = useRef(null);
+  const topLinks = [
+    { href: '#hero', label: t('nav.home') },
+    { href: '#about', label: t('nav.about') },
+    { href: '#specials', label: t('nav.specials') },
+    { href: '#contact', label: t('nav.contact') }
+  ];
+  const serviceColumns = [
+    {
+      heading: t('nav.facials'),
+      links: [
+        { href: '#services', label: t('services.cards.expressFacial.title') },
+        { href: '#services', label: t('services.cards.deepCleansing.title') },
+        { href: '#services', label: t('services.cards.deluxeAntiAging.title') }
+      ]
+    },
+    {
+      heading: t('nav.advancedCare'),
+      links: [
+        { href: '#services', label: t('services.cards.goldAntiAging.title') },
+        { href: '#services', label: t('services.cards.lamprobe.title') },
+        { href: '#services', label: t('services.cards.faceNeckMicrocurrent.title') }
+      ]
+    },
+    {
+      heading: t('nav.wellnessWaxing'),
+      links: [
+        { href: '#services', label: t('services.cards.reflexology.title') },
+        { href: '#services', label: t('services.waxingHeading') },
+        { href: '#contact', label: t('nav.bookAppointment') }
+      ]
+    }
+  ];
 
   useEffect(() => {
     const closeOnOutsideClick = (event) => {
@@ -70,9 +70,9 @@ function MegaMenu() {
 
   return (
     <header className="site-header">
-      <nav className="mega-nav" aria-label="Primary navigation" ref={navRef}>
+      <nav className="mega-nav" aria-label={t('nav.ariaPrimary')} ref={navRef}>
         <a className="brand" href="#hero" onClick={closeAllMenus}>
-          Natural Skin Care SA
+          {t('nav.brand')}
         </a>
 
         <button
@@ -82,7 +82,7 @@ function MegaMenu() {
           aria-controls="main-menu"
           onClick={() => setMenuOpen((prev) => !prev)}
         >
-          Menu
+          {t('nav.menu')}
         </button>
 
         <div id="main-menu" className={`menu-panel ${menuOpen ? 'open' : ''}`}>
@@ -102,13 +102,13 @@ function MegaMenu() {
                 aria-controls="services-mega-menu"
                 onClick={() => setServicesOpen((prev) => !prev)}
               >
-                Services
+                {t('nav.services')}
               </button>
               <div
                 id="services-mega-menu"
                 className={`services-mega-menu ${servicesOpen ? 'open' : ''}`}
                 role="group"
-                aria-label="Services menu"
+                aria-label={t('nav.servicesAria')}
               >
                 {serviceColumns.map((column) => (
                   <section key={column.heading} className="services-column">
@@ -125,6 +125,23 @@ function MegaMenu() {
                   </section>
                 ))}
               </div>
+            </li>
+            <li className="language-switcher">
+              <span>{t('nav.language')}:</span>
+              <button
+                type="button"
+                className={`language-btn ${i18n.language === 'en' ? 'active' : ''}`}
+                onClick={() => i18n.changeLanguage('en')}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                className={`language-btn ${i18n.language === 'es' ? 'active' : ''}`}
+                onClick={() => i18n.changeLanguage('es')}
+              >
+                ES
+              </button>
             </li>
           </ul>
         </div>

@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import MegaMenu from './components/MegaMenu';
 import Hero from './components/Hero';
 import SpecialsCarousel from './components/SpecialsCarousel';
 import { serviceCards, waxingServices } from './data/services';
 
 function App() {
+  const { t, i18n } = useTranslation();
   const [marketingStatus, setMarketingStatus] = useState('idle');
   const [marketingError, setMarketingError] = useState('');
+
+  useEffect(() => {
+    document.title = t('meta.title');
+    const descriptionTag = document.querySelector('meta[name="description"]');
+    if (descriptionTag) {
+      descriptionTag.setAttribute('content', t('meta.description'));
+    }
+  }, [i18n.language, t]);
 
   async function handleMarketingSubmit(event) {
     event.preventDefault();
@@ -32,7 +42,7 @@ function App() {
 
       if (!response.ok) {
         setMarketingStatus('error');
-        setMarketingError(payload.error || 'Something went wrong. Please try again.');
+        setMarketingError(payload.error || t('contact.fallbackError'));
         return;
       }
 
@@ -40,7 +50,7 @@ function App() {
       form.reset();
     } catch {
       setMarketingStatus('error');
-      setMarketingError('Could not reach the server. Try again later or use the email link above.');
+      setMarketingError(t('contact.offlineError'));
     }
   }
 
@@ -52,43 +62,33 @@ function App() {
 
         <section id="about" className="section about">
           <div className="content-wrap">
-            <h2>Natural Skin Care SA by Norma Perry</h2>
-            {/* <p>We offer skincare services that focus on natural products and gentle treatments. Our goal is to help your skin look and feel its best using safe, simple, and effective methods.</p>
-            <p>We use high-quality, natural, and organic product lines to deliver safe and effective results. Monthly treatments are recommended to maintain healthy, glowing skin, prevent signs of aging, and keep your skin clean and hydrated.</p> */}
-            <p>
-              Natural Skin Care SA by Norma Perry is rooted in gentle, personalized care using thoughtfully selected natural products.
-              Every treatment is designed to support healthy skin function, calm sensitivity, and reveal a balanced, luminous complexion.
-            </p>
-            <p>
-              Monthly skincare sessions help maintain progress, prevent buildup, and keep your skin looking refreshed all year long.
-              Norma combines professional techniques with a relaxing spa atmosphere so each visit supports both skin health and stress relief.
-            </p>
+            <h2>{t('about.heading')}</h2>
+            <p>{t('about.p1')}</p>
+            <p>{t('about.p2')}</p>
           </div>
         </section>
 
         <section id="services" className="section services">
           <div className="content-wrap">
-            <h2>Services</h2>
-            <p className="section-intro">
-              Explore customized skincare and wellness treatments designed for visible results and restorative self-care.
-            </p>
-            <p>Each facial includes deep cleansing, exfoliation, and gentle extractions to leave your skin smooth and clear. A revitalizing mask and light facial massage complete the experience, helping to restore and nourish your skin.</p>
+            <h2>{t('services.heading')}</h2>
+            <p className="section-intro">{t('services.intro')}</p>
+            <p>{t('services.overview')}</p>
 
-            <div className="service-grid" role="list" aria-label="Service offerings">
-              {serviceCards.map((service) => (
-                <article key={service.title} className="service-card" role="listitem">
-                  <h3>{service.title}</h3>
-                  <p className="duration">{service.duration}</p>
-                  <p>{service.description}</p>
+            <div className="service-grid" role="list" aria-label={t('services.ariaOfferings')}>
+              {serviceCards.map((serviceKey) => (
+                <article key={serviceKey} className="service-card" role="listitem">
+                  <h3>{t(`services.cards.${serviceKey}.title`)}</h3>
+                  <p className="duration">{t(`services.cards.${serviceKey}.duration`)}</p>
+                  <p>{t(`services.cards.${serviceKey}.description`)}</p>
                 </article>
               ))}
             </div>
 
             <article className="waxing-list">
-              <h3>Waxing Services</h3>
+              <h3>{t('services.waxingHeading')}</h3>
               <ul>
-                {waxingServices.map((item) => (
-                  <li key={item}>{item}</li>
+                {waxingServices.map((itemKey) => (
+                  <li key={itemKey}>{t(`services.waxingItems.${itemKey}`)}</li>
                 ))}
               </ul>
             </article>
@@ -97,12 +97,9 @@ function App() {
 
         <section id="specials" className="section specials">
           <div className="content-wrap">
-            <h2>Specials</h2>
+            <h2>{t('specials.heading')}</h2>
             <SpecialsCarousel />
-            <p className="specials-copy">
-              Specials are refreshed regularly based on seasonal skincare goals and appointment availability.
-              Placeholder promotions are currently shown and will be replaced with Norma&#39;s current offers.
-            </p>
+            <p className="specials-copy">{t('specials.intro')}</p>
           </div>
         </section>
 
@@ -110,26 +107,24 @@ function App() {
           <div className="content-wrap">
             <div className="contact-layout">
               <div className="contact-layout__intro">
-                <h2>Contact</h2>
-                <p>Appointments are available by reservation only.</p>
+                <h2>{t('contact.heading')}</h2>
+                <p>{t('contact.appointments')}</p>
                 <p>
-                  Email: <a href="mailto:normacperry@gmail.com">normacperry@gmail.com</a>
+                  {t('contact.emailLabel')} <a href="mailto:normacperry@gmail.com">normacperry@gmail.com</a>
                   <br />
-                  Phone: <a href="tel:+12108879339">(210) 887-9339</a>
+                  {t('contact.phoneLabel')} <a href="tel:+12108879339">(210) 887-9339</a>
                 </p>
               </div>
 
               <div className="marketing-signup">
-                <h3 className="marketing-signup__title">Email list</h3>
-                <p className="marketing-signup__intro">
-                  Get occasional updates on specials, seasonal treatments, and skincare tips.
-                </p>
+                <h3 className="marketing-signup__title">{t('contact.emailListTitle')}</h3>
+                <p className="marketing-signup__intro">{t('contact.emailListIntro')}</p>
                 <form
                   className="marketing-signup__form"
-                  aria-label="Marketing email signup"
+                  aria-label={t('contact.signupAria')}
                   onSubmit={handleMarketingSubmit}
                 >
-                  <label htmlFor="marketingFirstName">First name (optional)</label>
+                  <label htmlFor="marketingFirstName">{t('contact.firstNameLabel')}</label>
                   <input
                     id="marketingFirstName"
                     name="marketingFirstName"
@@ -137,7 +132,7 @@ function App() {
                     autoComplete="given-name"
                   />
 
-                  <label htmlFor="marketingEmail">Email</label>
+                  <label htmlFor="marketingEmail">{t('contact.emailInputLabel')}</label>
                   <input
                     id="marketingEmail"
                     name="marketingEmail"
@@ -148,15 +143,12 @@ function App() {
 
                   <label className="marketing-signup__consent">
                     <input type="checkbox" name="marketingConsent" value="yes" required />
-                    <span>
-                      I agree to receive occasional marketing emails about specials and studio news. I can unsubscribe
-                      anytime.
-                    </span>
+                    <span>{t('contact.consent')}</span>
                   </label>
 
                   {marketingStatus === 'success' && (
                     <p className="contact-form-feedback contact-form-feedback--success" role="status">
-                      You&apos;re on the list—watch your inbox for specials and skincare tips.
+                      {t('contact.success')}
                     </p>
                   )}
                   {marketingStatus === 'error' && marketingError && (
@@ -166,7 +158,7 @@ function App() {
                   )}
 
                   <button type="submit" className="btn btn-primary" disabled={marketingStatus === 'sending'}>
-                    {marketingStatus === 'sending' ? 'Joining…' : 'Subscribe'}
+                    {marketingStatus === 'sending' ? t('contact.submitSending') : t('contact.submitIdle')}
                   </button>
                 </form>
               </div>
@@ -176,13 +168,15 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <p>Natural Skin Care SA by Norma Perry</p>
+        <p>{t('meta.title')}</p>
         <p>18834 Stone Oak Pkwy, Suite 104, San Antonio, TX 78258</p>
         <p>
           <a href="tel:+12108879339">(210) 887-9339</a> |{' '}
           <a href="mailto:normacperry@gmail.com">normacperry@gmail.com</a>
         </p>
-        <p>&copy; {new Date().getFullYear()} Natural Skin Care SA. All rights reserved.</p>
+        <p>
+          &copy; {new Date().getFullYear()} Natural Skin Care SA. {t('footer.rights')}
+        </p>
       </footer>
     </>
   );

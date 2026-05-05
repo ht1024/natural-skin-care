@@ -117,6 +117,29 @@ textarea:focus-visible {
   background: var(--rose-200);
 }
 
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.language-btn {
+  border: 1px solid rgba(61, 37, 50, 0.22);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--rose-950);
+  padding: 0.2rem 0.55rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.language-btn.active {
+  background: var(--rose-900);
+  border-color: var(--rose-900);
+  color: var(--text-light);
+}
+
 .services-item {
   position: relative;
 }
