@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "title": "Natural Skin Care SA by Norma Perry",
+    "description": "Natural Skin Care SA by Norma Perry offers appointment-only facial and skincare services with gentle, natural products in San Antonio, TX.",
+    "siteUrl": "https://naturalskincaresa.com"
+  },
+  "nav": {
+    "ariaPrimary": "Primary navigation",
+    "brand": "Natural Skin Care SA",
+    "menu": "Menu",
+    "services": "Services",
+    "servicesAria": "Services menu",
+    "language": "Language",
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "facials": "Facials",
+    "advancedCare": "Advanced Care",
+    "wellnessWaxing": "Wellness & Waxing",
+    "bookAppointment": "Book Appointment"
+  },
+  "hero": {
+    "eyebrow": "Natural Skin Care SA by Norma Perry",
+    "headingPrefix": "Elevated Skin Rituals to",
+    "word1": "Restore",
+    "word2": "Hydrate",
+    "word3": "Glow",
+    "body": "Gentle, natural skincare experiences tailored to your monthly wellness routine and long-term skin goals.",
+    "ctaServices": "View Services",
+    "ctaContact": "Book Appointment"
+  },
+  "about": {
+    "heading": "Natural Skin Care SA by Norma Perry",
+    "p1": "Natural Skin Care SA by Norma Perry is rooted in gentle, personalized care using thoughtfully selected natural products. Every treatment is designed to support healthy skin function, calm sensitivity, and reveal a balanced, luminous complexion.",
+    "p2": "Monthly skincare sessions help maintain progress, prevent buildup, and keep your skin looking refreshed all year long. Norma combines professional techniques with a relaxing spa atmosphere so each visit supports both skin health and stress relief."
+  },
+  "services": {
+    "heading": "Services",
+    "intro": "Explore customized skincare and wellness treatments designed for visible results and restorative self-care.",
+    "overview": "Each facial includes deep cleansing, exfoliation, and gentle extractions to leave your skin smooth and clear. A revitalizing mask and light facial massage complete the experience, helping to restore and nourish your skin.",
+    "featuredHeading": "Featured Treatments",
+    "featuredAria": "Featured treatments",
+    "waxingHeading": "Waxing Services",
+    "cards": {
+      "ft01": {
+        "title": "Express Facial",
+        "duration": "50 mins $85",
+        "description": "This facial is the perfect introduction to professional skincare. This relaxing facial refreshes and revives your skin in under an hour, leaving your face with a radiant glow."
+      },
+      "ft02": {
+        "title": "Deluxe Facial",
+        "duration": "2 hrs $160",
+        "description": "Indulge in our luxurious two-hour Deluxe Facial with a deep cleanse, intensive hydration, a nutrient-rich mask, and a relaxing facial massage. Finish with a soothing foot massage."
+      },
+      "ft03": {
+        "title": "Deep Cleansing Facial",
+        "duration": "90 mins $120",
+        "description": "Reveal a fresher, healthier-looking complexion with this deep cleansing facial that removes buildup, unclogs pores, and purifies your skin. Enjoy a smoother, clearer, and revitalized glow."
+      },
+      "ft04": {
+        "title": "Face Lifting & Neck Microcurrent",
+        "duration": "1 hr $120",
+        "description": "A non-invasive treatment using microcurrent technology to lift and tone the face and neck, helping improve firmness, define facial contours, and promote a more youthful-looking appearance."
+      },
+      "ft05": {
+        "title": "Gold Anti-Aging Facial",
+        "duration": "90 mins $120",
+        "description": "A treatment using a 24K gold-infused mask to help improve skin firmness, boost circulation, and support collagen production while reducing the appearance of fine lines and dullness."
+      },
+      "ft06": {
+        "title": "Microcurrent & Cupping",
+        "duration": "1 hr $120",
+        "description": "A therapeutic body treatment that combines microcurrent technology and cupping therapy to improve circulation, soften scar tissue, relieve muscle tension, and help reduce muscle pain."
+      },
+      "ft07": {
+        "title": "Reflexology",
+        "duration": "1 hr $85",
+        "description": "A relaxing foot therapy that applies gentle pressure to specific points on the feet. This treatment helps relieve tension, improve relaxation, and promotes an overall sense of well-being."
+      },
+      "ft08": {
+        "title": "LamProbe",
+        "duration": "Varies",
+        "description": "Reveal smoother, healthier-looking skin with the non-invasive LamProbe. It precisely treats acne, broken capillaries, cherry angiomas, milia, clogged pores, skin tags, fibromas, and spider veins."
+      }
+    },
+    "waxingItems": {
+      "fullFace": "Full Face Wax",
+      "chin": "Chin Wax",
+      "eyebrow": "Eyebrow Wax",
+      "frenchBikini": "French Bikini Wax",
+      "fullLeg": "Full Leg Wax",
+      "halfLeg": "Half Leg Wax",
+      "lip": "Lip Wax",
+      "underarm": "Underarm Wax"
+    }
+  },
+  "contact": {
+    "heading": "Contact",
+    "appointmentsPrefix": "Appointments are available by reservation only.",
+    "appointmentsSuffix": "No walk-ins due to the length of time spent with each client for a perfect skin treatment.",
+    "emailLabel": "Email:",
+    "phoneLabel": "Phone:",
+    "addressLabel": "Address:",
+    "address": "18834 Stone Oak Pkwy, Suite 104, San Antonio, TX 78258",
+    "mapsLink": "Get directions on Google Maps"
+  },
+  "footer": {
+    "businessName": "Natural Skin Care SA by Norma Perry",
+    "address": "18834 Stone Oak Pkwy, Suite 104, San Antonio, TX 78258",
+    "rights": "All rights reserved."
+  }
+}

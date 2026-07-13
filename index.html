@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!--
+        SITE DESIGN & DEVELOPMENT BY:
+        Company Name: MBLZ
+        Website: http://mblz.com/
+        Contact: et@mblz.com
+        Built: JULY 2026
+
+        REFACTORED: July 2026 - Pure HTML/CSS/JavaScript (No Node.js/React)
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Natural Skin Care SA by Norma Perry offers appointment-only facial and skincare services with gentle, natural products in San Antonio, TX."
+    />
+    <title>Natural Skin Care SA by Norma Perry</title>
+
+    <!-- Update canonical/OG URLs if your production domain differs -->
+    <link rel="canonical" href="https://naturalskincaresa.com/" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="assets/favicon.png" />
+
+    <!-- Open Graph (OG) tags for social sharing — visible in page source, not on the page itself -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Natural Skin Care SA by Norma Perry" />
+    <meta property="og:title" content="Natural Skin Care SA by Norma Perry" />
+    <meta
+      property="og:description"
+      content="Appointment-only facial and skincare services with gentle, natural products in San Antonio, TX."
+    />
+    <meta property="og:url" content="https://naturalskincaresa.com/" />
+    <meta property="og:image" content="https://naturalskincaresa.com/assets/imgs/hero/hero-desktop.jpg" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Natural Skin Care SA by Norma Perry" />
+    <meta
+      name="twitter:description"
+      content="Appointment-only facial and skincare services with gentle, natural products in San Antonio, TX."
+    />
+    <meta name="twitter:image" content="https://naturalskincaresa.com/assets/imgs/hero/hero-desktop.jpg" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BeautySalon",
+        "name": "Natural Skin Care SA by Norma Perry",
+        "image": "https://naturalskincaresa.com/assets/imgs/hero/hero-desktop.jpg",
+        "url": "https://naturalskincaresa.com/",
+        "telephone": "+1-210-887-9339",
+        "email": "skincarenpsa@gmail.com",
+        "priceRange": "$$",
+        "description": "Appointment-only facial and skincare services with gentle, natural products in San Antonio, TX.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "18834 Stone Oak Pkwy, Suite 104",
+          "addressLocality": "San Antonio",
+          "addressRegion": "TX",
+          "postalCode": "78258",
+          "addressCountry": "US"
+        },
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=18834+Stone+Oak+Pkwy+Suite+104+San+Antonio+TX+78258",
+        "areaServed": {
+          "@type": "City",
+          "name": "San Antonio"
+        }
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles01.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="mega-nav" data-i18n-aria="nav.ariaPrimary" aria-label="Primary navigation">
+        <a class="brand" href="#hero" data-i18n="nav.brand">Natural Skin Care SA</a>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="main-menu"
+          data-i18n-aria="nav.menu"
+          aria-label="Menu"
+        >
+          <span data-i18n="nav.menu">Menu</span>
+        </button>
+
+        <div id="main-menu" class="menu-panel">
+          <ul class="menu-list">
+            <li>
+              <a href="#hero" class="nav-link" data-i18n="nav.home">Home</a>
+            </li>
+            <li>
+              <a href="#about" class="nav-link" data-i18n="nav.about">About</a>
+            </li>
+            <li>
+              <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+            </li>
+            <li class="services-item">
+              <button
+                type="button"
+                class="services-trigger"
+                aria-expanded="false"
+                aria-controls="services-menu"
+                data-i18n-aria="nav.servicesAria"
+                aria-label="Services menu"
+              >
+                <span data-i18n="nav.services">Services</span>
+              </button>
+            </li>
+            <li class="language-switcher">
+              <button type="button" class="language-btn" data-lang="en">English</button>
+              <button type="button" class="language-btn" data-lang="es">Español</button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div
+        id="services-menu"
+        class="services-mega-menu"
+        role="group"
+        data-i18n-aria="nav.servicesAria"
+        aria-label="Services menu"
+      >
+        <div class="services-mega-menu__inner">
+          <div class="services-column">
+            <h3 data-i18n="nav.facials">Facials</h3>
+            <ul>
+              <li><a href="#services" class="service-link" data-i18n="services.cards.ft01.title">Express Facial</a></li>
+              <li><a href="#services" class="service-link" data-i18n="services.cards.ft02.title">Deluxe Facial</a></li>
+              <li><a href="#services" class="service-link" data-i18n="services.cards.ft03.title">Deep Cleansing Facial</a></li>
+            </ul>
+          </div>
+          <div class="services-column">
+            <h3 data-i18n="nav.advancedCare">Advanced Care</h3>
+            <ul>
+              <li><a href="#services" class="service-link" data-i18n="services.cards.ft05.title">Gold Anti-Aging Facial</a></li>
+              <li><a href="#services" class="service-link" data-i18n="services.cards.ft08.title">LamProbe</a></li>
+              <li><a href="#services" class="service-link" data-i18n="services.cards.ft04.title">Face Lifting & Neck Microcurrent</a></li>
+              <li><a href="#services" class="service-link" data-i18n="services.cards.ft06.title">Microcurrent & Cupping</a></li>
+            </ul>
+          </div>
+          <div class="services-column">
+            <h3 data-i18n="nav.wellnessWaxing">Wellness & Waxing</h3>
+            <ul>
+              <li><a href="#services" class="service-link" data-i18n="services.cards.ft07.title">Reflexology</a></li>
+              <li><a href="#waxing" class="service-link" data-i18n="services.waxingHeading">Waxing Services</a></li>
+              <li><a href="#contact" class="service-link" data-i18n="nav.bookAppointment">Book Appointment</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero section">
+        <picture class="hero-media" aria-hidden="true">
+          <source media="(min-width: 1024px)" srcset="assets/imgs/hero/hero-desktop.jpg" />
+          <source media="(min-width: 640px)" srcset="assets/imgs/hero/hero-tablet.jpg" />
+          <img src="assets/imgs/hero/hero-mobile.jpg" alt="" />
+        </picture>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Natural Skin Care SA by Norma Perry</p>
+          <h1>
+            <span data-i18n="hero.headingPrefix">Elevated Skin Rituals to</span>
+            <span class="hero-word" aria-live="polite" data-current-word="0">Restore</span>
+          </h1>
+          <p data-i18n="hero.body">Gentle, natural skincare experiences tailored to your monthly wellness routine and long-term skin goals.</p>
+          <div class="hero-cta-group">
+            <a class="btn btn-primary" href="#services" data-i18n="hero.ctaServices">View Services</a>
+            <a class="btn btn-secondary" href="#contact" data-i18n="hero.ctaContact">Book Appointment</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <h2 data-i18n="about.heading">Natural Skin Care SA by Norma Perry</h2>
+          <p data-i18n="about.p1">Natural Skin Care SA by Norma Perry is rooted in gentle, personalized care using thoughtfully selected natural products. Every treatment is designed to support healthy skin function, calm sensitivity, and reveal a balanced, luminous complexion.</p>
+          <p data-i18n="about.p2">Monthly skincare sessions help maintain progress, prevent buildup, and keep your skin looking refreshed all year long. Norma combines professional techniques with a relaxing spa atmosphere so each visit supports both skin health and stress relief.</p>
+        </div>
+      </section>
+
+      <section id="services" class="section services-section">
+        <div class="container">
+          <h2 data-i18n="services.heading">Services</h2>
+          <p data-i18n="services.intro">Explore customized skincare and wellness treatments designed for visible results and restorative self-care.</p>
+          <p data-i18n="services.overview">Each facial includes deep cleansing, exfoliation, and gentle extractions to leave your skin smooth and clear. A revitalizing mask and light facial massage complete the experience, helping to restore and nourish your skin.</p>
+
+
+<!-- ============================================================================
+FEATURED TREATMENTS
+============================================================================ -->
+
+          <h2 class="center-heading" data-i18n="services.featuredHeading">Featured Treatments</h2>
+          <div class="featured-strip" role="list" data-i18n-aria="services.featuredAria" aria-label="Featured treatments">
+            <article class="featured-card" role="listitem" data-service="ft01">
+              <div class="featured-card__media">
+                <img src="assets/imgs/services/featured/express-facial-thumbnail.png" alt="" class="featured-card__image" loading="lazy" decoding="async" />
+              </div>
+              <div class="featured-card__body">
+                <h4 data-i18n="services.cards.ft01.title">Express Facial</h4>
+                <p class="featured-card__duration" data-i18n="services.cards.ft01.duration">50 mins $85</p>
+                <p class="featured-card__description" data-i18n="services.cards.ft01.description">This facial is the perfect introduction to professional skincare.</p>
+              </div>
+            </article>
+
+            <article class="featured-card" role="listitem" data-service="ft02">
+              <div class="featured-card__media">
+                <img src="assets/imgs/services/featured/deluxe-anti-aging-thumbnail.png" alt="" class="featured-card__image" loading="lazy" decoding="async" />
+              </div>
+              <div class="featured-card__body">
+                <h4 data-i18n="services.cards.ft02.title">Deluxe Facial</h4>
+                <p class="featured-card__duration" data-i18n="services.cards.ft02.duration">2 hrs $160</p>
+                <p class="featured-card__description" data-i18n="services.cards.ft02.description">Indulge in our luxurious two-hour Deluxe Facial.</p>
+              </div>
+            </article>
+
+            <article class="featured-card" role="listitem" data-service="ft03">
+              <div class="featured-card__media">
+                <img src="assets/imgs/services/featured/deep-cleansing-thumbnail.png" alt="" class="featured-card__image" loading="lazy" decoding="async" />
+              </div>
+              <div class="featured-card__body">
+                <h4 data-i18n="services.cards.ft03.title">Deep Cleansing Facial</h4>
+                <p class="featured-card__duration" data-i18n="services.cards.ft03.duration">90 mins $120</p>
+                <p class="featured-card__description" data-i18n="services.cards.ft03.description">Reveal a fresher, healthier-looking complexion.</p>
+              </div>
+            </article>
+
+            <article class="featured-card" role="listitem" data-service="ft04">
+              <div class="featured-card__media">
+                <img src="assets/imgs/services/featured/face-lifting-neck-microcurrent-thumbnail.png" alt="" class="featured-card__image" loading="lazy" decoding="async" />
+              </div>
+              <div class="featured-card__body">
+                <h4 data-i18n="services.cards.ft04.title">Face Lifting & Neck Microcurrent</h4>
+                <p class="featured-card__duration" data-i18n="services.cards.ft04.duration">1 hr $120</p>
+                <p class="featured-card__description" data-i18n="services.cards.ft04.description">A non-invasive treatment using microcurrent technology.</p>
+              </div>
+            </article>
+
+            <article class="featured-card" role="listitem" data-service="ft05">
+              <div class="featured-card__media">
+                <img src="assets/imgs/services/featured/gold-anti-aging-facial-thumbnail.png" alt="" class="featured-card__image" loading="lazy" decoding="async" />
+              </div>
+              <div class="featured-card__body">
+                <h4 data-i18n="services.cards.ft05.title">Gold Anti-Aging Facial</h4>
+                <p class="featured-card__duration" data-i18n="services.cards.ft05.duration">90 mins $120</p>
+                <p class="featured-card__description" data-i18n="services.cards.ft05.description">A treatment using a 24K gold-infused mask.</p>
+              </div>
+            </article>
+
+            <article class="featured-card" role="listitem" data-service="ft06">
+              <div class="featured-card__media">
+                <img src="assets/imgs/services/featured/microcurrent-cupping-body-treatment-thumbnail.png" alt="" class="featured-card__image" loading="lazy" decoding="async" />
+              </div>
+              <div class="featured-card__body">
+                <h4 data-i18n="services.cards.ft06.title">Microcurrent & Cupping</h4>
+                <p class="featured-card__duration" data-i18n="services.cards.ft06.duration">1 hr $120</p>
+                <p class="featured-card__description" data-i18n="services.cards.ft06.description">A therapeutic body treatment combining technologies.</p>
+              </div>
+            </article>
+
+            <article class="featured-card" role="listitem" data-service="ft07">
+              <div class="featured-card__media">
+                <img src="assets/imgs/services/featured/reflexology-thumbnail.png" alt="" class="featured-card__image" loading="lazy" decoding="async" />
+              </div>
+              <div class="featured-card__body">
+                <h4 data-i18n="services.cards.ft07.title">Reflexology</h4>
+                <p class="featured-card__duration" data-i18n="services.cards.ft07.duration">1 hr $85</p>
+                <p class="featured-card__description" data-i18n="services.cards.ft07.description">A relaxing foot therapy that applies gentle pressure.</p>
+              </div>
+            </article>
+
+            <article class="featured-card" role="listitem" data-service="ft08">
+              <div class="featured-card__media">
+                <img src="assets/imgs/services/featured/lamprobe-thumbnail.png" alt="" class="featured-card__image" loading="lazy" decoding="async" />
+              </div>
+              <div class="featured-card__body">
+                <h4 data-i18n="services.cards.ft08.title">LamProbe</h4>
+                <p class="featured-card__duration" data-i18n="services.cards.ft08.duration">Varies</p>
+                <p class="featured-card__description" data-i18n="services.cards.ft08.description">Reveal smoother, healthier-looking skin with LamProbe.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+<!-- ============================================================================
+WAXING SERVICES
+============================================================================ -->
+
+      <section id="waxing" class="section waxing-section">
+        <div class="container">
+          <h2 class="center-heading" data-i18n="services.waxingHeading">Waxing Services</h2>
+          <div class="waxing-grid">
+            <article class="waxing-card"><p data-i18n="services.waxingItems.fullFace">Full Face Wax</p></article>
+            <article class="waxing-card"><p data-i18n="services.waxingItems.chin">Chin Wax</p></article>
+            <article class="waxing-card"><p data-i18n="services.waxingItems.eyebrow">Eyebrow Wax</p></article>
+            <article class="waxing-card"><p data-i18n="services.waxingItems.frenchBikini">French Bikini Wax</p></article>
+            <article class="waxing-card"><p data-i18n="services.waxingItems.fullLeg">Full Leg Wax</p></article>
+            <article class="waxing-card"><p data-i18n="services.waxingItems.halfLeg">Half Leg Wax</p></article>
+            <article class="waxing-card"><p data-i18n="services.waxingItems.lip">Lip Wax</p></article>
+            <article class="waxing-card"><p data-i18n="services.waxingItems.underarm">Underarm Wax</p></article>
+          </div>
+        </div>
+      </section>
+
+
+<!-- ============================================================================
+PHOTO SECTION
+============================================================================ -->
+<p><center><img src="https://img1.niftyimages.com/8khh/i9bd/ye3r" /></center></p>
+
+      <section id="specials" class="section specials">
+        <div class="content-wrap">
+            <div class="banners-carousel" aria-roledescription="carousel" aria-label="specials.ariaCarousel">
+                <picture class="banners-carousel__background">
+                    <source media="(max-width:600px)" srcset="/assets/banner01-mobile-N0Wu-Pie.png">
+                    <img src="/assets/imgs/banners/banner01.png" alt="" loading="lazy" class="banners-carousel__bg-img">
+                </picture>
+                <div class="banners-slides">
+                    <article class="banner-card active" aria-hidden="false">
+                        <h3 class="banner-card__title"></h3>
+                        <p class="banner-card__details"></p>
+                        <p class="banner-cta"></p>
+                    </article>
+                </div>
+                <div class="banners-controls"></div>
+            </div>
+        </div>
+    </section>
+    
+
+      <section id="contact" class="section contact-section">
+        <div class="container">
+          <h2 data-i18n="contact.heading">Contact</h2>
+
+          <div class="contact-info">
+            <p data-i18n="contact.appointmentsPrefix"><strong>Appointments are available by reservation only.</strong></p>
+            <p data-i18n="contact.appointmentsSuffix">No walk-ins due to the length of time spent with each client for a perfect skin treatment.</p>
+
+            <div class="contact-details">
+              <p>
+                <strong data-i18n="contact.emailLabel">Email:</strong>
+                <a href="mailto:skincarenpsa@gmail.com">skincarenpsa@gmail.com</a>
+              </p>
+              <p>
+                <strong data-i18n="contact.phoneLabel">Phone:</strong>
+                <a href="tel:+12108879339">(210) 887-9339</a>
+              </p>
+              <p>
+                <strong data-i18n="contact.addressLabel">Address:</strong>
+                <a
+                  class="maps-link"
+                  href="https://www.google.com/maps/search/?api=1&query=18834+Stone+Oak+Pkwy+Suite+104+San+Antonio+TX+78258"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="contact.address"
+                >
+                  18834 Stone Oak Pkwy, Suite 104, San Antonio, TX 78258
+                </a>
+              </p>
+              <p>
+                <a
+                  class="maps-link maps-link--cta"
+                  href="https://www.google.com/maps/search/?api=1&query=18834+Stone+Oak+Pkwy+Suite+104+San+Antonio+TX+78258"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n="contact.mapsLink"
+                >
+                  Get directions on Google Maps
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        <p data-i18n="footer.businessName">Natural Skin Care SA by Norma Perry</p>
+        <p>
+          <a
+            class="maps-link"
+            href="https://www.google.com/maps/search/?api=1&query=18834+Stone+Oak+Pkwy+Suite+104+San+Antonio+TX+78258"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="footer.address"
+          >
+            18834 Stone Oak Pkwy, Suite 104, San Antonio, TX 78258
+          </a>
+        </p>
+        <p><a href="mailto:skincarenpsa@gmail.com">skincarenpsa@gmail.com</a></p>
+        <p>&copy; 2026 Natural Skin Care SA by Norma Perry. <span data-i18n="footer.rights">All rights reserved.</span></p>
+      </div>
+    </footer>
+
+    <script src="assets/locales/translations.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>

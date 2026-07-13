@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "title": "Natural Skin Care SA by Norma Perry",
+    "description": "Natural Skin Care SA by Norma Perry ofrece faciales y servicios de cuidado de la piel con cita previa, usando productos suaves y naturales en San Antonio, TX.",
+    "siteUrl": "https://naturalskincaresa.com"
+  },
+  "nav": {
+    "ariaPrimary": "Navegacion principal",
+    "brand": "Natural Skin Care SA",
+    "menu": "Menu",
+    "services": "Servicios",
+    "servicesAria": "Menu de servicios",
+    "language": "Idioma",
+    "home": "Inicio",
+    "about": "Acerca",
+    "contact": "Contacto",
+    "facials": "Faciales",
+    "advancedCare": "Cuidado avanzado",
+    "wellnessWaxing": "Bienestar y depilacion",
+    "bookAppointment": "Reservar cita"
+  },
+  "hero": {
+    "eyebrow": "Natural Skin Care SA by Norma Perry",
+    "headingPrefix": "Rituales de piel elevados para",
+    "word1": "Restaurar",
+    "word2": "Hidratar",
+    "word3": "Brillar",
+    "body": "Experiencias de cuidado de la piel suaves y naturales personalizadas para tu rutina mensual de bienestar y objetivos de piel a largo plazo.",
+    "ctaServices": "Ver servicios",
+    "ctaContact": "Reservar cita"
+  },
+  "about": {
+    "heading": "Natural Skin Care SA by Norma Perry",
+    "p1": "Natural Skin Care SA by Norma Perry se centra en un cuidado suave y personalizado usando productos naturales seleccionados cuidadosamente. Cada tratamiento apoya la funcion saludable de la piel, calma la sensibilidad y revela una tez equilibrada y luminosa.",
+    "p2": "Las sesiones mensuales ayudan a mantener el progreso, prevenir acumulacion y mantener la piel con un aspecto fresco todo el ano. Norma combina tecnicas profesionales con un ambiente relajante para que cada visita apoye salud de la piel y alivie el estres."
+  },
+  "services": {
+    "heading": "Servicios",
+    "intro": "Explora tratamientos personalizados de cuidado de la piel y bienestar disenados para resultados visibles y autocuidado restaurador.",
+    "overview": "Cada facial incluye limpieza profunda, exfoliacion y extracciones suaves para dejar la piel lisa y clara. Una mascarilla revitalizante y un ligero masaje facial completan la experiencia, ayudando a restaurar y nutrir la piel.",
+    "featuredHeading": "Tratamientos destacados",
+    "featuredAria": "Tratamientos destacados",
+    "waxingHeading": "Servicios de depilacion",
+    "cards": {
+      "ft01": {
+        "title": "Facial express",
+        "duration": "50 min $85",
+        "description": "Una renovacion enfocada que limpia profundamente y devuelve luminosidad en menos de una hora."
+      },
+      "ft02": {
+        "title": "Facial Deluxe",
+        "duration": "2 h $160",
+        "description": "Tratamiento restaurador que elimina congestion, hidrata y apoya el equilibrio saludable de la piel."
+      },
+      "ft03": {
+        "title": "Facial de limpieza profunda",
+        "duration": "90 min $120",
+        "description": "Tratamiento restaurador que elimina congestion, hidrata y apoya el equilibrio saludable de la piel."
+      },
+      "ft04": {
+        "title": "Lifting facial y microcorriente de cuello",
+        "duration": "1 h $120",
+        "description": "Estimulo de microcorriente para una piel con apariencia mas tonificada y elevada en rostro y cuello."
+      },
+      "ft05": {
+        "title": "Facial antiedad Gold",
+        "duration": "90 min $120",
+        "description": "Tratamiento de lujo para iluminar y mejorar firmeza, textura y luminosidad."
+      },
+      "ft06": {
+        "title": "Tratamiento corporal de microcorriente y ventosas",
+        "duration": "1 h $120",
+        "description": "Sesion corporal para apoyar circulacion, tono y relajacion despues del tratamiento."
+      },
+      "ft07": {
+        "title": "Reflexologia",
+        "duration": "1 h $85",
+        "description": "Tratamiento de pies para aliviar estres y apoyar el bienestar integral."
+      },
+      "ft08": {
+        "title": "LamProbe",
+        "duration": "Variable",
+        "description": "Tratamiento de precision para irregularidades menores de la piel con enfoque en la comodidad."
+      }
+    },
+    "waxingItems": {
+      "fullFace": "Depilacion facial completa",
+      "chin": "Depilacion de barbilla",
+      "eyebrow": "Depilacion de cejas",
+      "frenchBikini": "Depilacion bikini frances",
+      "fullLeg": "Depilacion de pierna completa",
+      "halfLeg": "Depilacion de media pierna",
+      "lip": "Depilacion de labio",
+      "underarm": "Depilacion de axilas"
+    }
+  },
+  "contact": {
+    "heading": "Contacto",
+    "appointmentsPrefix": "Las citas estan disponibles solo con reservacion.",
+    "appointmentsSuffix": "No hay ingresos sin cita debido al tiempo que se dedica a cada cliente para un tratamiento perfecto.",
+    "emailLabel": "Correo:",
+    "phoneLabel": "Telefono:",
+    "addressLabel": "Direccion:",
+    "address": "18834 Stone Oak Pkwy, Suite 104, San Antonio, TX 78258",
+    "mapsLink": "Ver direccion en Google Maps"
+  },
+  "footer": {
+    "businessName": "Natural Skin Care SA by Norma Perry",
+    "address": "18834 Stone Oak Pkwy, Suite 104, San Antonio, TX 78258",
+    "rights": "Todos los derechos reservados."
+  }
+}
