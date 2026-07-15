@@ -7,7 +7,7 @@
         Website: http://mblz.com/
         Built: JULY 2026
 
-        REFACTORED: July 2026 - Pure HTML/CSS/JavaScript (No Node.js/React)
+        July 2026 - Pure HTML/CSS/JavaScript 
     -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -321,9 +321,9 @@ WAXING SERVICES
 
 
 <!-- ============================================================================
-PHOTO SECTION
+SPECIALS SECTION
 ============================================================================ -->
-<p><center><img src="https://img1.niftyimages.com/8khh/i9bd/ye3r" /></center></p>
+<!-- OLD 
 
       <section id="specials" class="section specials">
         <div class="content-wrap">
@@ -343,7 +343,42 @@ PHOTO SECTION
             </div>
         </div>
     </section>
-    
+
+  -->
+
+  <section id="specials" class="section specials">
+    <div class="content-wrap">
+        <div class="banners-carousel" aria-roledescription="carousel" aria-label="specials.ariaCarousel">
+            
+            <!-- Background stays exactly as you had it -->
+            <picture class="banners-carousel__background">
+                <source media="(max-width:600px)" srcset="/assets/imgs/banners/banner01-mobile.png">
+                <img src="/assets/imgs/banners/banner01.png" 
+                     alt="" 
+                     loading="lazy" 
+                     class="banners-carousel__bg-img">
+            </picture>
+
+            <div class="banners-slides">
+                <article class="banner-card active" aria-hidden="false">
+                    <div class="banner-card__content">
+                        <h3 class="banner-card__title"></h3>
+                        <p class="banner-card__details"></p>
+                        <p class="banner-cta"></p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="banners-controls"></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================================
+CONTACT SECTION
+============================================================================ -->
+
 
       <section id="contact" class="section contact-section">
         <div class="container">
@@ -390,6 +425,10 @@ PHOTO SECTION
         </div>
       </section>
     </main>
+
+<!-- ============================================================================
+FOOTER SECTION
+============================================================================ -->
 
 
     <footer class="site-footer">

@@ -1,6 +1,6 @@
 /**
  * Natural Skin Care SA - Vanilla JavaScript Application
- * Pure HTML/CSS/JS - No Node.js or React
+ * Pure HTML/CSS/JS 
  */
 
 // ============================================================================
