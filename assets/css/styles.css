@@ -534,16 +534,19 @@ textarea:focus-visible {
 
   .menu-panel {
     width: 100%;
+    text-align: left;
   }
 
   .menu-list {
     margin-top: 0.4rem;
     flex-direction: column;
-    align-items: stretch;
     padding: 0.6rem;
     border: 1px solid rgba(80, 43, 63, 0.14);
     border-radius: 12px;
     background: #fff;
+
+    align-items: flex-start;
+    text-align: left;
   }
 
   .services-item {
@@ -612,7 +615,7 @@ textarea:focus-visible {
 .services-trigger {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-decoration: none;
   font: inherit;
   font-weight: 500;
