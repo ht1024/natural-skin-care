@@ -709,3 +709,25 @@ textarea:focus-visible {
     gap: 1rem;
   }
 }
+
+.menu-panel.open {
+  display: block;
+}
+
+.services-mega-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.language-btn.active {
+  background: var(--rose-900);
+  border-color: var(--rose-900);
+  color: var(--text-light);
+}
+
+@media (max-width: 879px) {
+  .services-mega-menu.open {
+    display: grid;
+  }
+}
