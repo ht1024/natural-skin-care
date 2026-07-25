@@ -26,3 +26,9 @@ jobs:
             --delete \
             --exclude ".git/*" \
             --exclude ".github/*"
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id EBZGRZ3Y6C4BE \
+            --paths "/*"
