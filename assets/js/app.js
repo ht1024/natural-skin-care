@@ -151,7 +151,7 @@ const menuManager = (() => {
       }
     });
 
-    document.querySelectorAll('.nav-link, .service-link').forEach((link) => {
+    document.querySelectorAll('.nav-link, .service').forEach((link) => {
       link.addEventListener('click', () => {
         mainMenu.classList.remove('open');
         servicesMenu.classList.remove('open');
