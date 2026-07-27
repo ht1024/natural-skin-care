@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOTTIE MATRIX</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="cabinet">
+      <header class="cabinet-brand">
+        <h1 class="brand-title">DOTTIE MATRIX</h1>
+        <p class="brand-tagline">ARCADE EDITION</p>
+      </header>
+
+      <div class="canvas-wrapper">
+        <div class="crt-overlay" aria-hidden="true"></div>
+        <canvas id="canvas"></canvas>
+
+        <!-- Attract / title screen -->
+        <div id="attractScreen" class="attract-screen">
+          <div class="attract-inner">
+            <p class="attract-blink">PRESS START</p>
+            <p class="attract-hint">CLICK THE DOTS — SMALLER = MORE POINTS</p>
+            <button id="startButton" class="arcade-btn" type="button">START</button>
+          </div>
+        </div>
+
+        <!-- Round complete overlay -->
+        <div id="levelComplete" class="level-complete-overlay" hidden>
+          <div class="level-complete-box">
+            <h2 id="levelCompleteTitle">STAGE CLEAR</h2>
+            <p class="round-score">SCORE <span id="roundScore">0</span></p>
+            <div class="top-scores">
+              <div class="hi-label">HI-SCORES</div>
+              <ol id="scoreHistory"></ol>
+            </div>
+            <div class="overlay-actions">
+              <button id="startLevel2Button" class="arcade-btn" type="button">NEXT STAGE</button>
+              <button id="backToTitleButton" class="arcade-btn arcade-btn-ghost" type="button">TITLE</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- In-game HUD -->
+        <div class="scoreboard-area in-canvas-controls">
+          <div class="sb-left">
+            <div class="playerbox">
+              <div class="player-label">PLAYER 1</div>
+              <div class="player-points digit">
+                <span id="playerPoints">0</span>
+              </div>
+            </div>
+            <div class="miss-box">
+              <div class="player-label">MISSED</div>
+              <div class="player-points digit">
+                <span id="missedCount">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sb-center">
+            <div class="scorebox">
+              <div class="high-label">HI-SCORE</div>
+              <div class="high-value digit"><span id="highScore">0</span></div>
+            </div>
+            <div class="speed-control">
+              <label class="player-label" for="rangeOfDescent">SPEED <span id="range">1</span></label>
+              <input
+                type="range"
+                id="rangeOfDescent"
+                class="myslider"
+                min="1"
+                max="7"
+                value="3"
+                step="1"
+              />
+              <span id="demo" class="speed-readout digit">40 px/s</span>
+            </div>
+          </div>
+
+          <div class="sb-right">
+            <div class="playerbox">
+              <div class="player-label">TIME</div>
+              <div class="player-points digit">
+                <span id="countdownDisplay">33:000</span>
+              </div>
+            </div>
+            <button id="pauseButton" class="arcade-btn arcade-btn-sm" type="button" hidden>
+              PAUSE
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <footer class="cabinet-foot">
+        <span>1UP</span>
+        <span class="foot-sep">·</span>
+        <span>CATCH THE MATRIX</span>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>
