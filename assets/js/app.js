@@ -83,6 +83,10 @@ const i18n = (() => {
     document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
       el.setAttribute('aria-label', getTranslation(el.dataset.i18nAria));
     });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+      el.alt = getTranslation(el.dataset.i18nAlt);
+    });
   }
 
   function subscribe(callback) {
