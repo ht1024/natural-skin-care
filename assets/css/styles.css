@@ -503,7 +503,7 @@ body.menu-open {
    ============================================================================ */
 
 .waxing {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(248, 242, 245, 0.95) 100%);
+  background: #3d2835;
 }
 
 .center-heading {
@@ -512,6 +512,10 @@ body.menu-open {
   color: var(--rose-950);
   font-size: clamp(2rem, 3.5vw, 2.75rem);
   font-weight: 600;
+}
+
+.waxing .center-heading {
+  color: #fff9fb;
 }
 
 .waxing-grid {
@@ -525,7 +529,7 @@ body.menu-open {
   display: grid;
   place-items: center;
   padding: 1.5rem 1.25rem;
-  background: rgba(255, 248, 250, 0.95);
+  background: #f3edf0;
   border-radius: 16px;
   border: 1px solid rgba(80, 43, 63, 0.1);
   box-shadow: 0 6px 24px rgba(42, 26, 36, 0.06);
@@ -537,6 +541,7 @@ body.menu-open {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
+  color: #1f1520;
 }
 
 
