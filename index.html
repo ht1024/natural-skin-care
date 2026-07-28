@@ -9,6 +9,14 @@
 
         July 2026 - Pure HTML/CSS/JavaScript 
     -->
+        <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NXSWQ2HH');</script>
+  <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -81,6 +89,11 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXSWQ2HH"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+   
     <header class="site-header">
       <nav class="mega-nav" data-i18n-aria="nav.ariaPrimary" aria-label="Primary navigation">
         <a class="brand" href="#hero" data-i18n="nav.brand">Natural Skin Care SA</a>
@@ -93,7 +106,12 @@
           data-i18n-aria="nav.menu"
           aria-label="Menu"
         >
-          <span data-i18n="nav.menu">Menu</span>
+          <span class="menu-toggle__bars" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span class="visually-hidden" data-i18n="nav.menu">Menu</span>
         </button>
 
         <div id="main-menu" class="menu-panel">
@@ -117,7 +135,43 @@
                 aria-label="Services menu"
               >
                 <span data-i18n="nav.services">Services</span>
+                <span class="services-trigger__chevron" aria-hidden="true"></span>
               </button>
+              <div
+                id="services-menu"
+                class="services-mega-menu"
+                role="group"
+                data-i18n-aria="nav.servicesAria"
+                aria-label="Services menu"
+              >
+                <div class="services-mega-menu__inner">
+                  <div class="services-column">
+                    <h3 data-i18n="nav.facials">Facials</h3>
+                    <ul>
+                      <li><a href="#services" class="service" data-i18n="services.cards.ft01.title">Express Facial</a></li>
+                      <li><a href="#services" class="service" data-i18n="services.cards.ft02.title">Deluxe Facial</a></li>
+                      <li><a href="#services" class="service" data-i18n="services.cards.ft03.title">Deep Cleansing Facial</a></li>
+                    </ul>
+                  </div>
+                  <div class="services-column">
+                    <h3 data-i18n="nav.advancedCare">Advanced Care</h3>
+                    <ul>
+                      <li><a href="#services" class="service" data-i18n="services.cards.ft05.title">Gold Anti-Aging Facial</a></li>
+                      <li><a href="#services" class="service" data-i18n="services.cards.ft08.title">LamProbe</a></li>
+                      <li><a href="#services" class="service" data-i18n="services.cards.ft04.title">Face Lifting & Neck Microcurrent</a></li>
+                      <li><a href="#services" class="service" data-i18n="services.cards.ft06.title">Microcurrent & Cupping</a></li>
+                    </ul>
+                  </div>
+                  <div class="services-column">
+                    <h3 data-i18n="nav.wellnessWaxing">Wellness & Waxing</h3>
+                    <ul>
+                      <li><a href="#services" class="service" data-i18n="services.cards.ft07.title">Reflexology</a></li>
+                      <li><a href="#waxing" class="service" data-i18n="services.waxingHeading">Waxing Services</a></li>
+                      <li><a href="#contact" class="service" data-i18n="nav.bookAppointment">Book Appointment</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </li>
             <li class="language-switcher">
               <button type="button" class="language-btn" data-lang="en">English</button>
@@ -127,41 +181,7 @@
         </div>
       </nav>
 
-      <div
-        id="services-menu"
-        class="services-mega-menu"
-        role="group"
-        data-i18n-aria="nav.servicesAria"
-        aria-label="Services menu"
-      >
-        <div class="services-mega-menu__inner">
-          <div class="services-column">
-            <h3 data-i18n="nav.facials">Facials</h3>
-            <ul>
-              <li><a href="#services" class="service" data-i18n="services.cards.ft01.title">Express Facial</a></li>
-              <li><a href="#services" class="service" data-i18n="services.cards.ft02.title">Deluxe Facial</a></li>
-              <li><a href="#services" class="service" data-i18n="services.cards.ft03.title">Deep Cleansing Facial</a></li>
-            </ul>
-          </div>
-          <div class="services-column">
-            <h3 data-i18n="nav.advancedCare">Advanced Care</h3>
-            <ul>
-              <li><a href="#services" class="service" data-i18n="services.cards.ft05.title">Gold Anti-Aging Facial</a></li>
-              <li><a href="#services" class="service" data-i18n="services.cards.ft08.title">LamProbe</a></li>
-              <li><a href="#services" class="service" data-i18n="services.cards.ft04.title">Face Lifting & Neck Microcurrent</a></li>
-              <li><a href="#services" class="service" data-i18n="services.cards.ft06.title">Microcurrent & Cupping</a></li>
-            </ul>
-          </div>
-          <div class="services-column">
-            <h3 data-i18n="nav.wellnessWaxing">Wellness & Waxing</h3>
-            <ul>
-              <li><a href="#services" class="service" data-i18n="services.cards.ft07.title">Reflexology</a></li>
-              <li><a href="#waxing" class="service" data-i18n="services.waxingHeading">Waxing Services</a></li>
-              <li><a href="#contact" class="service" data-i18n="nav.bookAppointment">Book Appointment</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <div class="menu-backdrop" aria-hidden="true"></div>
     </header>
 
     <main>
