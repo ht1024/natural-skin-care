@@ -1,54 +1,122 @@
-import { useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { useEffect, useRef, useState } from "react";
+import { SUBMIT_APPOINTMENT_URL, VITE_SUPABASE_ANON_KEY } from "@/lib/supabase";
 import { serviceOptions } from "@/data/services";
 import { useReveal } from "@/hooks/useReveal";
-import { Mail, MapPin, Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { useTurnstile } from "@/hooks/useTurnstile";
+import { useLanguage } from "@/context/LanguageContext";
+import { MapPin, Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 type Status = "idle" | "submitting" | "success" | "error";
+
+const DRAFT_KEY = "appointment-form-draft";
 
 export default function ContactForm() {
   const { ref, visible } = useReveal<HTMLDivElement>();
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const { containerRef, tokenRef, state: turnstileState, reset: resetTurnstile } =
+    useTurnstile("appointment-request");
+  const { lang, t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus("submitting");
     setErrorMsg("");
 
+    // The server decides whether verification is required; a missing token
+    // is still sent so the server can enforce its own policy. A broken
+    // widget (e.g. domain allowlist mismatch) must not block submission,
+    // the server verifies tokens when its policy requires them.
+    if (turnstileState === "loading") {
+      setStatus("error");
+      setErrorMsg(t.form.turnstileLoading);
+      return;
+    }
+    if (turnstileState === "error") {
+      console.warn("Turnstile widget failed; submitting anyway for server-side policy check");
+    }
+
+    setStatus("submitting");
+
     const formData = new FormData(e.currentTarget);
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const phone = formData.get("phone") as string;
-    const service = formData.get("service") as string;
-    const preferredDate = formData.get("preferredDate") as string;
-    const preferredTime = formData.get("preferredTime") as string;
-    const message = formData.get("message") as string;
+    const body = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      service: formData.get("service"),
+      preferredDate: formData.get("preferredDate"),
+      preferredTime: formData.get("preferredTime"),
+      message: formData.get("message"),
+      turnstileToken: tokenRef.current,
+    };
 
     try {
-      const { error } = await supabase.from("appointment_requests").insert({
-        name,
-        email,
-        phone: phone || null,
-        service: service || null,
-        preferred_date: preferredDate || null,
-        preferred_time: preferredTime || null,
-        message: message || null,
+      const response = await fetch(SUBMIT_APPOINTMENT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${VITE_SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify(body),
       });
 
-      if (error) throw error;
+      const result = (await response.json().catch(() => null)) as
+        | { ok?: boolean; error?: string }
+        | null;
+
+      if (!response.ok) {
+        throw new Error(result?.error || t.form.genericError);
+      }
 
       setStatus("success");
-      e.currentTarget.reset();
+      formRef.current?.reset();
+      localStorage.removeItem(DRAFT_KEY);
     } catch (err) {
       setStatus("error");
       setErrorMsg(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong. Please try emailing Norma directly."
+        err instanceof Error ? err.message : t.form.genericError
       );
+    } finally {
+      resetTurnstile();
     }
   };
+
+  const saveDraft = () => {
+    const form = formRef.current;
+    if (!form) return;
+    const data = new FormData(form);
+    const draft: Record<string, string> = {};
+    data.forEach((value, key) => {
+      if (typeof value === "string" && value) draft[key] = value;
+    });
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+  };
+
+  useEffect(() => {
+    if (status === "success") return;
+    const raw = localStorage.getItem(DRAFT_KEY);
+    if (!raw) return;
+    try {
+      const values = JSON.parse(raw) as Record<string, string>;
+      const form = formRef.current;
+      if (!form) return;
+      for (const [key, value] of Object.entries(values)) {
+        const el = form.elements.namedItem(key);
+        if (
+          el instanceof HTMLInputElement ||
+          el instanceof HTMLTextAreaElement ||
+          el instanceof HTMLSelectElement
+        ) {
+          el.value = value;
+        }
+      }
+    } catch {
+      localStorage.removeItem(DRAFT_KEY);
+    }
+  }, [lang, status]);
+
+  const inputClasses =
+    "w-full px-4 py-3 bg-cream-100/50 border border-cream-200 rounded-lg text-sm text-charcoal focus:outline-none focus:border-gold-400 focus:bg-white transition-colors";
 
   return (
     <section id="contact" className="py-20 md:py-28 bg-cream-50">
@@ -57,12 +125,12 @@ export default function ContactForm() {
         className={`max-w-5xl mx-auto px-6 reveal ${visible ? "visible" : ""}`}
       >
         <div className="text-center mb-12">
-          <p className="text-gold-600 text-sm tracking-[0.2em] uppercase mb-4">Get in Touch</p>
+          <p className="text-gold-600 text-sm tracking-[0.2em] uppercase mb-4">{t.form.eyebrow}</p>
           <h2 className="font-serif text-3xl md:text-5xl text-charcoal font-light mb-4">
-            Request an Appointment
+            {t.form.title}
           </h2>
           <p className="text-charcoal/60 text-base max-w-2xl mx-auto leading-relaxed">
-            Fill out the form below and Norma will personally call you back to confirm your appointment. Please include a few date and time options that work best for you.
+            {t.form.subtitle}
           </p>
         </div>
 
@@ -70,41 +138,39 @@ export default function ContactForm() {
           {/* Info sidebar */}
           <div className="md:col-span-2 bg-sage-700 rounded-2xl p-8 text-cream-50 flex flex-col justify-between">
             <div>
-              <h3 className="font-serif text-2xl font-light mb-6">Contact Details</h3>
+              <h3 className="font-serif text-2xl font-light mb-6">{t.form.contactTitle}</h3>
               <div className="space-y-6">
-                <div className="flex items-start gap-3">
-                  <Mail className="w-5 h-5 text-gold-300 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-xs text-cream-100/60 uppercase tracking-wide mb-1">Email</p>
-                    <a
-                      href="mailto:skincarenpsa@gmail.com"
-                      className="text-cream-50 text-sm hover:text-gold-200 transition-colors"
-                    >
-                      skincarenpsa@gmail.com
-                    </a>
-                  </div>
-                </div>
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-gold-300 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-xs text-cream-100/60 uppercase tracking-wide mb-1">Address</p>
+                    <p className="text-xs text-cream-100/60 uppercase tracking-wide mb-1">{t.form.addressLabel}</p>
                     <a
                       href="https://www.google.com/maps/search/?api=1&query=18834+Stone+Oak+Pkwy+Suite+104+San+Antonio+TX+78258"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-cream-50 text-sm hover:text-gold-200 transition-colors"
                     >
-                      18834 Stone Oak Pkwy
+                      {t.form.address1}
                       <br />
-                      Suite 104, San Antonio, TX 78258
+                      {t.form.address2}
                     </a>
                   </div>
                 </div>
               </div>
+              <div className="mt-6 rounded-xl overflow-hidden border border-sage-600/60 shadow-lg">
+                <iframe
+                  src="https://www.google.com/maps?q=18834+Stone+Oak+Pkwy+Ste+104,+San+Antonio,+TX+78258&output=embed"
+                  title="Natural Skin Care SA location on Google Maps"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-56 border-0"
+                  allowFullScreen
+                />
+              </div>
             </div>
             <div className="mt-8 pt-6 border-t border-sage-600">
               <p className="text-cream-100/70 text-xs leading-relaxed">
-                Norma is unable to answer calls during treatments. Email is the best way to reach her — she will return your call to schedule.
+                {t.form.sidebarNote}
               </p>
             </div>
           </div>
@@ -115,41 +181,47 @@ export default function ContactForm() {
               <div className="flex flex-col items-center justify-center h-full text-center py-12">
                 <CheckCircle2 className="w-16 h-16 text-sage-500 mb-4" />
                 <h3 className="font-serif text-2xl text-charcoal font-light mb-2">
-                  Request Received
+                  {t.form.successTitle}
                 </h3>
                 <p className="text-charcoal/60 text-sm max-w-sm mb-6">
-                  Thank you for reaching out. Norma will personally call you back to confirm your appointment.
+                  {t.form.successBody}
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
                   className="px-6 py-2.5 text-sm font-medium text-gold-600 border border-gold-400 rounded-full hover:bg-gold-50 transition-colors"
                 >
-                  Send Another Request
+                  {t.form.successButton}
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form
+                ref={formRef}
+                onSubmit={handleSubmit}
+                onChange={saveDraft}
+                className="space-y-5"
+                key={lang}
+              >
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs text-charcoal/60 uppercase tracking-wide mb-2">
-                      Full Name *
+                      {t.form.nameLabel}
                     </label>
                     <input
                       name="name"
                       required
-                      className="w-full px-4 py-3 bg-cream-100/50 border border-cream-200 rounded-lg text-sm text-charcoal focus:outline-none focus:border-gold-400 focus:bg-white transition-colors"
+                      className={inputClasses}
                       placeholder="Jane Doe"
                     />
                   </div>
                   <div>
                     <label className="block text-xs text-charcoal/60 uppercase tracking-wide mb-2">
-                      Email *
+                      {t.form.emailLabel}
                     </label>
                     <input
                       name="email"
                       type="email"
                       required
-                      className="w-full px-4 py-3 bg-cream-100/50 border border-cream-200 rounded-lg text-sm text-charcoal focus:outline-none focus:border-gold-400 focus:bg-white transition-colors"
+                      className={inputClasses}
                       placeholder="jane@example.com"
                     />
                   </div>
@@ -158,25 +230,24 @@ export default function ContactForm() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs text-charcoal/60 uppercase tracking-wide mb-2">
-                      Phone (optional)
+                      {t.form.phoneLabel}
                     </label>
                     <input
                       name="phone"
                       type="tel"
-                      className="w-full px-4 py-3 bg-cream-100/50 border border-cream-200 rounded-lg text-sm text-charcoal focus:outline-none focus:border-gold-400 focus:bg-white transition-colors"
+                      className={inputClasses}
                       placeholder="(210) 555-0100"
                     />
                   </div>
                   <div>
                     <label className="block text-xs text-charcoal/60 uppercase tracking-wide mb-2">
-                      Service
+                      {t.form.serviceLabel}
                     </label>
-                    <select
-                      name="service"
-                      className="w-full px-4 py-3 bg-cream-100/50 border border-cream-200 rounded-lg text-sm text-charcoal focus:outline-none focus:border-gold-400 focus:bg-white transition-colors"
-                    >
-                      <option value="">Select a service</option>
-                      {serviceOptions.map((s) => (
+                    <select name="service" className={inputClasses} defaultValue="">
+                      <option value="" disabled>
+                        {t.form.servicePlaceholder}
+                      </option>
+                      {serviceOptions[lang].map((s) => (
                         <option key={s} value={s}>
                           {s}
                         </option>
@@ -188,35 +259,35 @@ export default function ContactForm() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs text-charcoal/60 uppercase tracking-wide mb-2">
-                      Preferred Date
+                      {t.form.dateLabel}
                     </label>
                     <input
                       name="preferredDate"
-                      className="w-full px-4 py-3 bg-cream-100/50 border border-cream-200 rounded-lg text-sm text-charcoal focus:outline-none focus:border-gold-400 focus:bg-white transition-colors"
-                      placeholder="e.g. Mon, Oct 14"
+                      className={inputClasses}
+                      placeholder={t.form.datePlaceholder}
                     />
                   </div>
                   <div>
                     <label className="block text-xs text-charcoal/60 uppercase tracking-wide mb-2">
-                      Preferred Time
+                      {t.form.timeLabel}
                     </label>
                     <input
                       name="preferredTime"
-                      className="w-full px-4 py-3 bg-cream-100/50 border border-cream-200 rounded-lg text-sm text-charcoal focus:outline-none focus:border-gold-400 focus:bg-white transition-colors"
-                      placeholder="e.g. Morning, 10am"
+                      className={inputClasses}
+                      placeholder={t.form.timePlaceholder}
                     />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-xs text-charcoal/60 uppercase tracking-wide mb-2">
-                    Message
+                    {t.form.messageLabel}
                   </label>
                   <textarea
                     name="message"
                     rows={4}
-                    className="w-full px-4 py-3 bg-cream-100/50 border border-cream-200 rounded-lg text-sm text-charcoal focus:outline-none focus:border-gold-400 focus:bg-white transition-colors resize-none"
-                    placeholder="Tell Norma about your skin goals or any specific concerns..."
+                    className={`${inputClasses} resize-none`}
+                    placeholder={t.form.messagePlaceholder}
                   />
                 </div>
 
@@ -224,6 +295,14 @@ export default function ContactForm() {
                   <div className="flex items-start gap-2 text-error text-sm bg-red-50 border border-red-200 rounded-lg px-4 py-3">
                     <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
                     <span>{errorMsg}</span>
+                  </div>
+                )}
+
+                <div ref={containerRef} aria-hidden="true" />
+
+                {turnstileState === "error" && (
+                  <div className="text-xs text-charcoal/50 px-1">
+                    The security check could not load. You can still submit your request below.
                   </div>
                 )}
 
@@ -235,12 +314,12 @@ export default function ContactForm() {
                   {status === "submitting" ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
-                      Sending Request...
+                      {t.form.submitting}
                     </>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      Send Appointment Request
+                      {t.form.submit}
                     </>
                   )}
                 </button>

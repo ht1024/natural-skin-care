@@ -1,6 +1,9 @@
-import { Mail, Clock, MapPin } from "lucide-react";
+import { Clock, MapPin } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -15,40 +18,37 @@ export default function Hero() {
 
       <div className="relative z-10 text-center px-6 max-w-3xl mx-auto pt-20">
         <p className="text-gold-300 text-sm md:text-base tracking-[0.3em] uppercase mb-4 animate-fade-in">
- Natural Skin Care SA
+          {t.hero.eyebrow}
         </p>
         <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-white font-light leading-tight mb-6 animate-fade-in-up">
-          Elevated Skin Rituals
+          {t.hero.title1}
           <br />
-          <span className="italic text-gold-200">to Restore</span>
+          <span className="italic text-gold-200">{t.hero.title2}</span>
         </h1>
         <p className="text-white/85 text-lg md:text-xl font-light leading-relaxed max-w-xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-          Gentle, natural skincare experiences tailored to your monthly wellness routine and long-term skin goals.
+          {t.hero.subtitle}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
           <a
             href="#contact"
             className="px-8 py-3.5 bg-gold-500 text-white text-sm font-medium tracking-wide rounded-full hover:bg-gold-600 transition-all duration-300 hover:scale-105 shadow-lg"
           >
-            Request an Appointment
+            {t.hero.ctaPrimary}
           </a>
           <a
             href="#services"
             className="px-8 py-3.5 border border-white/50 text-white text-sm font-medium tracking-wide rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105"
           >
-            Explore Treatments
+            {t.hero.ctaSecondary}
           </a>
         </div>
 
         <div className="flex flex-wrap justify-center gap-6 mt-14 text-white/70 text-xs tracking-wide animate-fade-in" style={{ animationDelay: "0.6s" }}>
           <span className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-gold-300" /> Stone Oak, San Antonio
+            <MapPin className="w-4 h-4 text-gold-300" /> {t.hero.location}
           </span>
           <span className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-gold-300" /> By Reservation Only
-          </span>
-          <span className="flex items-center gap-2">
-            <Mail className="w-4 h-4 text-gold-300" /> Email to Book
+            <Clock className="w-4 h-4 text-gold-300" /> {t.hero.reservation}
           </span>
         </div>
       </div>

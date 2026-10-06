@@ -1,7 +1,9 @@
 import { useReveal } from "@/hooks/useReveal";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function About() {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const { t } = useLanguage();
 
   return (
     <section id="about" className="py-20 md:py-28 bg-cream-50">
@@ -19,34 +21,34 @@ export default function About() {
             />
           </div>
           <div className="absolute -bottom-6 -right-6 bg-gold-500 text-white px-8 py-6 rounded-2xl shadow-xl hidden md:block">
-            <p className="font-serif text-3xl font-light">Norma</p>
-            <p className="text-sm tracking-wide text-gold-100">Perry, Founder</p>
+            <p className="font-serif text-3xl font-light">{t.about.founderName}</p>
+            <p className="text-sm tracking-wide text-gold-100">{t.about.founderTitle}</p>
           </div>
         </div>
 
         <div>
-          <p className="text-gold-600 text-sm tracking-[0.2em] uppercase mb-4">Our Philosophy</p>
+          <p className="text-gold-600 text-sm tracking-[0.2em] uppercase mb-4">{t.about.eyebrow}</p>
           <h2 className="font-serif text-3xl md:text-4xl text-charcoal font-light leading-tight mb-6">
-            Natural Skin Care SA by Norma Perry
+            {t.about.title}
           </h2>
           <p className="text-charcoal/70 text-base leading-relaxed mb-5">
-            Rooted in gentle, personalized care using thoughtfully selected natural products. Every treatment is designed to support healthy skin function, calm sensitivity, and reveal a balanced, luminous complexion.
+            {t.about.p1}
           </p>
           <p className="text-charcoal/70 text-base leading-relaxed mb-5">
-            Monthly skincare sessions help maintain progress, prevent buildup, and keep your skin looking refreshed all year long. Norma combines professional techniques with a relaxing spa atmosphere so each visit supports both skin health and stress relief.
+            {t.about.p2}
           </p>
           <div className="flex gap-8 mt-8">
             <div>
               <p className="font-serif text-3xl text-sage-600 font-light">100%</p>
-              <p className="text-xs text-charcoal/50 tracking-wide uppercase mt-1">Natural Products</p>
+              <p className="text-xs text-charcoal/50 tracking-wide uppercase mt-1">{t.about.stat1}</p>
             </div>
             <div>
               <p className="font-serif text-3xl text-sage-600 font-light">1-on-1</p>
-              <p className="text-xs text-charcoal/50 tracking-wide uppercase mt-1">Personalized Care</p>
+              <p className="text-xs text-charcoal/50 tracking-wide uppercase mt-1">{t.about.stat2}</p>
             </div>
             <div>
               <p className="font-serif text-3xl text-sage-600 font-light">By Res.</p>
-              <p className="text-xs text-charcoal/50 tracking-wide uppercase mt-1">Appointment Only</p>
+              <p className="text-xs text-charcoal/50 tracking-wide uppercase mt-1">{t.about.stat3}</p>
             </div>
           </div>
         </div>

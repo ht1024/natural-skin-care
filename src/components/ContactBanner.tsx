@@ -1,8 +1,10 @@
-import { Mail, PhoneCall, CalendarHeart } from "lucide-react";
+import { PhoneCall, CalendarHeart } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactBanner() {
   const { ref, visible } = useReveal<HTMLDivElement>();
+  const { t } = useLanguage();
 
   return (
     <section id="contact-banner" className="py-20 md:py-28 bg-sage-700 relative overflow-hidden">
@@ -18,43 +20,45 @@ export default function ContactBanner() {
         </div>
 
         <h2 className="font-serif text-3xl md:text-5xl text-cream-50 font-light mb-6 leading-tight">
-          Book Your Appointment by Email
+          {t.banner.title}
         </h2>
 
         <p className="text-cream-100/80 text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto mb-8">
-          Norma dedicates her full attention to each client during treatments and is unable to answer phone calls throughout the day.
+          {t.banner.intro}
         </p>
 
         <div className="bg-sage-800/50 border border-sage-600/50 rounded-2xl p-6 md:p-8 max-w-2xl mx-auto mb-10 text-left">
           <p className="text-cream-100/90 text-base md:text-lg leading-relaxed mb-5">
-            To request an appointment, please email with your preferred treatment, a few date and time options that work for you, and a brief note about your skin goals. Norma will personally return your call to confirm and schedule your visit.
+            {t.banner.boxText}
           </p>
           <div className="flex items-center gap-3 text-gold-200">
             <PhoneCall className="w-5 h-5 flex-shrink-0" />
             <p className="text-sm md:text-base font-light">
-              Email your request — Norma will call you back to finalize the booking.
+              {t.banner.boxNote}
             </p>
           </div>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="mailto:skincarenpsa@gmail.com?subject=Appointment%20Request"
+            href="#contact"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold-500 text-white text-sm font-medium tracking-wide rounded-full hover:bg-gold-600 transition-all duration-300 hover:scale-105 shadow-lg"
           >
-            <Mail className="w-5 h-5" />
-            Email Norma Directly
+            <CalendarHeart className="w-5 h-5" />
+            {t.banner.ctaPrimary}
           </a>
           <a
-            href="#contact"
+            href="https://www.google.com/maps/search/?api=1&query=18834+Stone+Oak+Pkwy+Suite+104+San+Antonio+TX+78258"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-cream-100/40 text-cream-50 text-sm font-medium tracking-wide rounded-full hover:bg-cream-50/10 transition-all duration-300 hover:scale-105"
           >
-            Use the Appointment Form
+            {t.banner.ctaSecondary}
           </a>
         </div>
 
         <p className="text-cream-100/50 text-xs tracking-wide mt-8">
-          Appointments are available by reservation only — no walk-ins, so every client receives undivided attention.
+          {t.banner.footnote}
         </p>
       </div>
     </section>
