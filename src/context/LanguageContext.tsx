@@ -8,7 +8,7 @@ type LanguageContextValue = {
   t: Translations;
 };
 
-const LanguageContext = createContext<LanguageContextValue | null>(null);
+const LanguageContext = createContext<LanguageContextValue |null>(null);
 
 function readInitialLanguage(): Language {
   try {

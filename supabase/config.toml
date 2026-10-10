@@ -1,4 +1,6 @@
-project_id = "neerzwcgfpufuutuitaq"
+# Supabase configuration for this project.
+
+project_id = "natural-skin-care"
 
 [functions.submit-appointment]
 verify_jwt = false
