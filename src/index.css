@@ -4,14 +4,165 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   CENTRAL THEME FILE
+   All color tokens live here. Components reference them through
+   Tailwind (sage-*, gold-*, cream-*, charcoal, error-*, success-*,
+   warning-*) — never hard-code hex values in components.
+
+   Values are stored as "R G B" channel triples so Tailwind can
+   apply opacity modifiers (e.g. bg-charcoal/40).
+
+   To change a palette: edit the RGB triples in the matching block
+   below. To add a new theme: copy a block, rename the selector
+   (e.g. [data-theme="ocean"]), and set it from ThemeToggle.tsx.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   LIGHT MODE PALETTE - REVERTED VERSION (sage green / warm gold)
+   Active by default and whenever the root element has no "dark" class.
+   ------------------------------------------------------------ */
+:root {
+  --sage-50: 244 247 244;
+  --sage-100: 227 236 228;
+  --sage-200: 199 216 202;
+  --sage-300: 163 187 168;
+  --sage-400: 124 154 131;
+  --sage-500: 93 126 103;
+  --sage-600: 71 100 81;
+  --sage-700: 58 81 66;
+  --sage-800: 48 65 52;
+  --sage-900: 40 53 44;
+
+  --gold-50: 251 248 240;
+  --gold-100: 245 237 214;
+  --gold-200: 233 217 168;
+  --gold-300: 220 191 115;
+  --gold-400: 208 168 74;
+  --gold-500: 192 145 50;
+  --gold-600: 165 118 42;
+  --gold-700: 133 92 37;
+  --gold-800: 110 75 35;
+  --gold-900: 93 64 33;
+
+  --cream-50: 253 252 250;
+  --cream-100: 250 246 240;
+  --cream-200: 243 235 224;
+  --cream-300: 233 220 200;
+
+  --charcoal: 42 42 40;
+
+  --error-50: 254 242 242;
+  --error-100: 254 226 226;
+  --error-200: 254 202 202;
+  --error-300: 252 165 165;
+  --error-400: 248 113 113;
+  --error-500: 239 68 68;
+  --error-600: 220 38 38;
+  --error-700: 185 28 28;
+  --error-800: 153 27 27;
+  --error-900: 127 29 29;
+
+  --success-50: 236 253 245;
+  --success-100: 209 250 229;
+  --success-200: 167 243 208;
+  --success-300: 110 231 183;
+  --success-400: 52 211 153;
+  --success-500: 16 185 129;
+  --success-600: 5 150 105;
+  --success-700: 4 120 87;
+  --success-800: 6 95 70;
+  --success-900: 6 78 59;
+
+  --warning-50: 255 251 235;
+  --warning-100: 254 243 199;
+  --warning-200: 253 230 138;
+  --warning-300: 252 211 77;
+  --warning-400: 251 191 36;
+  --warning-500: 245 158 11;
+  --warning-600: 217 119 6;
+  --warning-700: 180 83 9;
+  --warning-800: 146 64 14;
+  --warning-900: 120 53 15;
+}
+
+/* ------------------------------------------------------------
+   DARK MODE PALETTE - CURRENT GITHUB VERSION (plum / mauve)
+   Active whenever the root <html> element has the "dark" class,
+   which ThemeToggle.tsx adds and persists in localStorage.
+   ------------------------------------------------------------ */
+.dark {
+  --sage-50: 245 240 243;
+  --sage-100: 237 224 231;
+  --sage-200: 219 196 209;
+  --sage-300: 196 163 184;
+  --sage-400: 168 120 153;
+  --sage-500: 143 95 120;
+  --sage-600: 107 66 89;
+  --sage-700: 61 40 53;
+  --sage-800: 42 26 36;
+  --sage-900: 31 18 25;
+
+  --gold-50: 250 248 249;
+  --gold-100: 245 240 243;
+  --gold-200: 237 224 231;
+  --gold-300: 212 184 201;
+  --gold-400: 196 155 181;
+  --gold-500: 143 95 120;
+  --gold-600: 107 66 89;
+  --gold-700: 82 51 68;
+  --gold-800: 61 40 53;
+  --gold-900: 42 26 36;
+
+  --cream-50: 250 248 249;
+  --cream-100: 245 242 244;
+  --cream-200: 237 231 234;
+  --cream-300: 224 216 220;
+
+  --charcoal: 42 26 36;
+
+  --error-50: 252 240 240;
+  --error-100: 249 224 224;
+  --error-200: 240 192 192;
+  --error-300: 229 154 154;
+  --error-400: 217 112 112;
+  --error-500: 201 72 72;
+  --error-600: 168 48 48;
+  --error-700: 138 36 36;
+  --error-800: 110 28 28;
+  --error-900: 90 24 24;
+
+  --success-50: 240 245 240;
+  --success-100: 224 235 226;
+  --success-200: 196 216 201;
+  --success-300: 156 184 159;
+  --success-400: 110 149 115;
+  --success-500: 74 122 80;
+  --success-600: 56 98 66;
+  --success-700: 45 78 53;
+  --success-800: 36 62 44;
+  --success-900: 30 51 36;
+
+  --warning-50: 251 245 236;
+  --warning-100: 247 232 207;
+  --warning-200: 237 208 156;
+  --warning-300: 221 179 106;
+  --warning-400: 201 148 74;
+  --warning-500: 174 120 54;
+  --warning-600: 142 94 44;
+  --warning-700: 116 76 38;
+  --warning-800: 94 62 34;
+  --warning-900: 77 51 32;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Jost', system-ui, sans-serif;
-  color: #2A1A24;
-  background-color: #FAF8F9;
+  color: rgb(var(--charcoal));
+  background-color: rgb(var(--cream-50));
 }
 
 .font-serif {

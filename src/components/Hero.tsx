@@ -1,19 +1,53 @@
+import { useEffect, useState } from "react";
 import { Clock, MapPin } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
+const LIGHT_HERO_IMAGE =
+  "https://images.pexels.com/photos/36930756/pexels-photo-36930756.png?auto=compress&cs=tinysrgb&w=1920";
+
 export default function Hero() {
   const { t } = useLanguage();
+  const [isDark, setIsDark] = useState(true);
+
+  useEffect(() => {
+    const update = () =>
+      setIsDark(document.documentElement.classList.contains("dark"));
+    update();
+    const observer = new MutationObserver(update);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.pexels.com/photos/37229304/pexels-photo-37229304.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt="Spa facial treatment"
-          referrerPolicy="no-referrer"
-          className="w-full h-full object-cover animate-slow-zoom"
+        {isDark ? (
+          <picture>
+            <source media="(min-width: 1024px)" srcSet="/images/hero.jpg" />
+            <source media="(min-width: 640px)" srcSet="/images/hero-tablet.jpg" />
+            <img
+              src="/images/hero-mobile.jpg"
+              alt="Woman with glowing skin against a soft lavender backdrop"
+              className="w-full h-full object-cover animate-slow-zoom"
+            />
+          </picture>
+        ) : (
+          <img
+            src={LIGHT_HERO_IMAGE}
+            alt="Spa ambiance"
+            className="w-full h-full object-cover object-bottom animate-slow-zoom"
+          />
+        )}
+        <div
+          className={`absolute inset-0 bg-gradient-to-b transition-opacity duration-500 ${
+            isDark
+              ? "from-charcoal/60 via-charcoal/40 to-charcoal/70"
+              : "from-charcoal/40 via-charcoal/25 to-charcoal/50"
+          }`}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/40 to-charcoal/70" />
       </div>
 
       <div className="relative z-10 text-center px-6 max-w-3xl mx-auto pt-20">
