@@ -5,6 +5,13 @@ import { useLanguage } from "@/context/LanguageContext";
 const LIGHT_HERO_IMAGE =
   "https://images.pexels.com/photos/36930756/pexels-photo-36930756.png?auto=compress&cs=tinysrgb&w=1920";
 
+const DARK_HERO_DESKTOP =
+  "https://images.pexels.com/photos/6186752/pexels-photo-6186752.jpeg?auto=compress&cs=tinysrgb&w=2560";
+const DARK_HERO_TABLET =
+  "https://images.pexels.com/photos/1926811/pexels-photo-1926811.jpeg?auto=compress&cs=tinysrgb&w=1600";
+const DARK_HERO_MOBILE =
+  "https://images.pexels.com/photos/37229309/pexels-photo-37229309.jpeg?auto=compress&cs=tinysrgb&w=1080&h=1350&fit=crop";
+
 export default function Hero() {
   const { t } = useLanguage();
   const [isDark, setIsDark] = useState(true);
@@ -26,11 +33,11 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         {isDark ? (
           <picture>
-            <source media="(min-width: 1024px)" srcSet="/images/hero.jpg" />
-            <source media="(min-width: 640px)" srcSet="/images/hero-tablet.jpg" />
+            <source media="(min-width: 1024px)" srcSet={DARK_HERO_DESKTOP} />
+            <source media="(min-width: 640px)" srcSet={DARK_HERO_TABLET} />
             <img
-              src="/images/hero-mobile.jpg"
-              alt="Woman with glowing skin against a soft lavender backdrop"
+              src={DARK_HERO_MOBILE}
+              alt="Candlelit spa ambiance with rolled towels and fresh flowers"
               className="w-full h-full object-cover animate-slow-zoom"
             />
           </picture>
