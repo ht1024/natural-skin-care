@@ -18,7 +18,7 @@ export const featuredTreatments: Treatment[] = [
       es: "La introducción perfecta al cuidado profesional de la piel.",
     },
     image:
-      "https://images.pexels.com/photos/37229304/pexels-photo-37229304.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "https://images.pexels.com/photos/3985338/pexels-photo-3985338.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
   },
   {
     name: { en: "Deluxe Facial", es: "Facial Deluxe" },
@@ -40,7 +40,7 @@ export const featuredTreatments: Treatment[] = [
       es: "Revela un cutis más fresco y saludable.",
     },
     image:
-      "https://images.pexels.com/photos/37240358/pexels-photo-37240358.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
   },
   {
     name: {
@@ -65,7 +65,7 @@ export const featuredTreatments: Treatment[] = [
       es: "Un tratamiento con mascarilla infusionada con oro de 24K.",
     },
     image:
-      "https://images.pexels.com/photos/36436447/pexels-photo-36436447.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "https://images.pexels.com/photos/7582558/pexels-photo-7582558.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
   },
   {
     name: { en: "Microcurrent & Cupping", es: "Microcorriente y Ventosas" },
@@ -76,7 +76,7 @@ export const featuredTreatments: Treatment[] = [
       es: "Un tratamiento corporal terapéutico que combina tecnologías.",
     },
     image:
-      "https://images.pexels.com/photos/8313238/pexels-photo-8313238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "https://images.pexels.com/photos/8313198/pexels-photo-8313198.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
   },
   {
     name: { en: "Reflexology", es: "Reflexología" },
@@ -98,7 +98,7 @@ export const featuredTreatments: Treatment[] = [
       es: "Revela una piel más suave y saludable con LamProbe.",
     },
     image:
-      "https://images.pexels.com/photos/37229302/pexels-photo-37229302.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "https://images.pexels.com/photos/31261686/pexels-photo-31261686.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
   },
 ];
 
@@ -107,7 +107,7 @@ export const waxingServices: { en: string; es: string }[] = [
   { en: "Chin Wax", es: "Depilación de Mentón" },
   { en: "Eyebrow Wax", es: "Depilación de Cejas" },
   { en: "French Bikini Wax", es: "Depilación Bikini Francés" },
-  { en: "Full Leg Wax", es: "Depilación de Piernas Completa" },
+  { en: "Full Leg Wax", es: "Depilación de Piernas Completo" },
   { en: "Half Leg Wax", es: "Depilación de Media Pierna" },
   { en: "Lip Wax", es: "Depilación de Labio" },
   { en: "Underarm Wax", es: "Depilación de Axilas" },
@@ -146,7 +146,7 @@ export const serviceOptions: Record<Language, string[]> = {
     "Depilación de Mentón",
     "Depilación de Cejas",
     "Depilación Bikini Francés",
-    "Depilación de Piernas Completa",
+    "Depilación de Piernas Completo",
     "Depilación de Media Pierna",
     "Depilación de Labio",
     "Depilación de Axilas",
