@@ -21,3 +21,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# project images (kept out of git; images are added manually)
+public/images/*
