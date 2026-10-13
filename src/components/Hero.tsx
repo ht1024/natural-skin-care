@@ -2,19 +2,31 @@ import { useEffect, useState } from "react";
 import { Clock, MapPin } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-const LIGHT_HERO_IMAGE =
-  "https://images.pexels.com/photos/36930756/pexels-photo-36930756.png?auto=compress&cs=tinysrgb&w=1920";
+const LIGHT_HERO_IMAGES = [
+  {
+    src: "https://images.pexels.com/photos/36930756/pexels-photo-36930756.png?auto=compress&cs=tinysrgb&w=1920",
+    alt: "Woman with glowing skin against a soft lavender backdrop",
+  },
+  {
+    src: "https://images.pexels.com/photos/6186752/pexels-photo-6186752.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    alt: "Rolled towels and candlelight on a wooden shelf",
+  },
+  {
+    src: "https://images.pexels.com/photos/3985329/pexels-photo-3985329.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    alt: "Candles, orchids and spa stones",
+  },
+  {
+    src: "https://images.pexels.com/photos/7795393/pexels-photo-7795393.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    alt: "Candles and skincare products on a wooden tray",
+  },
+];
 
-const DARK_HERO_DESKTOP =
-  "https://images.pexels.com/photos/6186752/pexels-photo-6186752.jpeg?auto=compress&cs=tinysrgb&w=2560";
-const DARK_HERO_TABLET =
-  "https://images.pexels.com/photos/1926811/pexels-photo-1926811.jpeg?auto=compress&cs=tinysrgb&w=1600";
-const DARK_HERO_MOBILE =
-  "https://images.pexels.com/photos/37229309/pexels-photo-37229309.jpeg?auto=compress&cs=tinysrgb&w=1080&h=1350&fit=crop";
+const SLIDE_INTERVAL_MS = 6000;
 
 export default function Hero() {
   const { t } = useLanguage();
   const [isDark, setIsDark] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const update = () =>
@@ -28,25 +40,41 @@ export default function Hero() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (isDark) return;
+    const id = window.setInterval(
+      () => setActiveIndex((i) => (i + 1) % LIGHT_HERO_IMAGES.length),
+      SLIDE_INTERVAL_MS
+    );
+    return () => window.clearInterval(id);
+  }, [isDark]);
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         {isDark ? (
           <picture>
-            <source media="(min-width: 1024px)" srcSet={DARK_HERO_DESKTOP} />
-            <source media="(min-width: 640px)" srcSet={DARK_HERO_TABLET} />
+            <source media="(min-width: 1024px)" srcSet="/images/hero.jpg" />
+            <source media="(min-width: 640px)" srcSet="/images/hero-tablet.jpg" />
             <img
-              src={DARK_HERO_MOBILE}
-              alt="Candlelit spa ambiance with rolled towels and fresh flowers"
+              src="/images/hero-mobile.jpg"
+              alt="Woman with glowing skin against a soft lavender backdrop"
               className="w-full h-full object-cover animate-slow-zoom"
             />
           </picture>
         ) : (
-          <img
-            src={LIGHT_HERO_IMAGE}
-            alt="Spa ambiance"
-            className="w-full h-full object-cover object-bottom animate-slow-zoom"
-          />
+          <>
+            {LIGHT_HERO_IMAGES.map((image, index) => (
+              <img
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+                  index === activeIndex ? "opacity-100 animate-slow-zoom" : "opacity-0"
+                }`}
+              />
+            ))}
+          </>
         )}
         <div
           className={`absolute inset-0 bg-gradient-to-b transition-opacity duration-500 ${
