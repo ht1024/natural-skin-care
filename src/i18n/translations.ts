@@ -14,6 +14,9 @@ export const translations = {
       eyebrow: "Natural Skin Care SA",
       title1: "Elevated Skin Rituals",
       title2: "to Restore",
+      word1: "Restore",
+      word2: "Hydrate",
+      word3: "Glow",
       subtitle:
         "Gentle, natural skincare experiences tailored to your monthly wellness routine and long-term skin goals.",
       ctaPrimary: "Request an Appointment",
@@ -109,6 +112,9 @@ export const translations = {
       eyebrow: "Natural Skin Care SA",
       title1: "Rituales de Piel Elevados",
       title2: "para Restaurar",
+      word1: "Restaurar",
+      word2: "Hidratar",
+      word3: "Brillar",
       subtitle:
         "Experiencias de cuidado de la piel naturales y suaves, adaptadas a tu rutina mensual de bienestar y a tus objetivos de piel a largo plazo.",
       ctaPrimary: "Solicitar una Cita",
@@ -197,7 +203,7 @@ export const translations = {
 export type Translations = {
   nav: Record<"home" | "about" | "services" | "contact" | "book" | "brand", string>;
   hero: Record<
-    "eyebrow" | "title1" | "title2" | "subtitle" | "ctaPrimary" | "ctaSecondary" | "location" | "reservation",
+    "eyebrow" | "title1" | "title2" | "word1" | "word2" | "word3" | "subtitle" | "ctaPrimary" | "ctaSecondary" | "location" | "reservation",
     string
   >;
   banner: Record<
