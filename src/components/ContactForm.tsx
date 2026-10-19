@@ -119,11 +119,10 @@ export default function ContactForm() {
     "w-full px-4 py-3 bg-cream-100/50 border border-cream-200 rounded-lg text-sm text-charcoal focus:outline-none focus:border-gold-400 focus:bg-white transition-colors";
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-cream-50">
-      <div
-        ref={ref}
-        className={`max-w-5xl mx-auto px-6 reveal ${visible ? "visible" : ""}`}
-      >
+    <div
+      ref={ref}
+      className={`max-w-5xl mx-auto px-6 reveal ${visible ? "visible" : ""}`}
+    >
         <div className="text-center mb-12">
           <p className="text-gold-600 text-sm tracking-[0.2em] uppercase mb-4">{t.form.eyebrow}</p>
           <h2 className="font-serif text-3xl md:text-5xl text-charcoal font-light mb-4">
@@ -135,46 +134,6 @@ export default function ContactForm() {
         </div>
 
         <div className="grid md:grid-cols-5 gap-8">
-          {/* Info sidebar */}
-          <div className="md:col-span-2 bg-sage-700 rounded-2xl p-8 text-cream-50 flex flex-col justify-between">
-            <div>
-              <h3 className="font-serif text-2xl font-light mb-6">{t.form.contactTitle}</h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-gold-300 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-xs text-cream-100/60 uppercase tracking-wide mb-1">{t.form.addressLabel}</p>
-                    <a
-                      href="https://www.google.com/maps/search/?api=1&query=18834+Stone+Oak+Pkwy+Suite+104+San+Antonio+TX+78258"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-cream-50 text-sm hover:text-gold-200 transition-colors"
-                    >
-                      {t.form.address1}
-                      <br />
-                      {t.form.address2}
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-6 rounded-xl overflow-hidden border border-sage-600/60 shadow-lg">
-                <iframe
-                  src="https://www.google.com/maps?q=18834+Stone+Oak+Pkwy+Ste+104,+San+Antonio,+TX+78258&output=embed"
-                  title="Natural Skin Care SA location on Google Maps"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-56 border-0"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-            <div className="mt-8 pt-6 border-t border-sage-600">
-              <p className="text-cream-100/70 text-xs leading-relaxed">
-                {t.form.sidebarNote}
-              </p>
-            </div>
-          </div>
-
           {/* Form */}
           <div className="md:col-span-3 bg-white rounded-2xl p-8 shadow-lg">
             {status === "success" ? (
@@ -326,8 +285,47 @@ export default function ContactForm() {
               </form>
             )}
           </div>
+
+          {/* Info sidebar */}
+          <div className="md:col-span-2 bg-sage-700 rounded-2xl p-8 text-cream-50 flex flex-col justify-between">
+            <div>
+              <h3 className="font-serif text-2xl font-light mb-6">{t.form.contactTitle}</h3>
+              <div className="space-y-6">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-gold-300 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-xs text-cream-100/60 uppercase tracking-wide mb-1">{t.form.addressLabel}</p>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=18834+Stone+Oak+Pkwy+Suite+104+San+Antonio+TX+78258"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-cream-50 text-sm hover:text-gold-200 transition-colors"
+                    >
+                      {t.form.address1}
+                      <br />
+                      {t.form.address2}
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 rounded-xl overflow-hidden border border-sage-600/60 shadow-lg">
+                <iframe
+                  src="https://www.google.com/maps?q=18834+Stone+Oak+Pkwy+Ste+104,+San+Antonio,+TX+78258&output=embed"
+                  title="Natural Skin Care SA location on Google Maps"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-56 border-0"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+            <div className="mt-8 pt-6 border-t border-sage-600">
+              <p className="text-cream-100/70 text-xs leading-relaxed">
+                {t.form.sidebarNote}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
   );
 }
