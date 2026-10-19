@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Leaf } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { key: "home", href: "#home" },
@@ -61,8 +60,6 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2 md:gap-3">
-          <ThemeToggle onSolidBackground={scrolled} />
-
           <div
             className={`flex items-center rounded-full border transition-colors duration-300 overflow-hidden ${
               scrolled ? "border-cream-300" : "border-white/40"
@@ -137,9 +134,6 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
-            <li>
-              <ThemeToggle onSolidBackground />
-            </li>
             <li>
               <a
                 href="#contact"

@@ -2,7 +2,14 @@ import { useEffect, useState } from "react";
 import { Clock, MapPin } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-const LIGHT_HERO_IMAGES = [
+type HeroImage = {
+  src: string;
+  alt: string;
+  srcSetTablet?: string;
+  srcSetDesktop?: string;
+};
+
+const LIGHT_HERO_IMAGES: HeroImage[] = [
   {
     src: "https://images.pexels.com/photos/36930756/pexels-photo-36930756.png?auto=compress&cs=tinysrgb&w=1920",
     alt: "Woman with glowing skin against a soft lavender backdrop",
@@ -21,12 +28,25 @@ const LIGHT_HERO_IMAGES = [
   },
 ];
 
+const DARK_SLIDES = [
+  {
+    src: "/images/hero-mobile.jpg",
+    srcSetTablet: "/images/hero-tablet.jpg",
+    srcSetDesktop: "/images/hero.jpg",
+    alt: "Woman with glowing skin against a soft lavender backdrop",
+  },
+  ...LIGHT_HERO_IMAGES,
+];
+
 const SLIDE_INTERVAL_MS = 6000;
+
+const HERO_WORDS_KEYS = ["word1", "word2", "word3"] as const;
 
 export default function Hero() {
   const { t } = useLanguage();
   const [isDark, setIsDark] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {
     const update = () =>
@@ -40,42 +60,43 @@ export default function Hero() {
     return () => observer.disconnect();
   }, []);
 
+  const images = isDark ? DARK_SLIDES : LIGHT_HERO_IMAGES;
+
   useEffect(() => {
-    if (isDark) return;
-    const id = window.setInterval(
-      () => setActiveIndex((i) => (i + 1) % LIGHT_HERO_IMAGES.length),
-      SLIDE_INTERVAL_MS
-    );
+    const id = window.setInterval(() => {
+      setActiveIndex((i) => (i + 1) % images.length);
+      setWordIndex((i) => (i + 1) % HERO_WORDS_KEYS.length);
+    }, SLIDE_INTERVAL_MS);
     return () => window.clearInterval(id);
-  }, [isDark]);
+  }, [images.length]);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        {isDark ? (
-          <picture>
-            <source media="(min-width: 1024px)" srcSet="/images/hero.jpg" />
-            <source media="(min-width: 640px)" srcSet="/images/hero-tablet.jpg" />
-            <img
-              src="/images/hero-mobile.jpg"
-              alt="Woman with glowing skin against a soft lavender backdrop"
-              className="w-full h-full object-cover animate-slow-zoom"
-            />
-          </picture>
-        ) : (
-          <>
-            {LIGHT_HERO_IMAGES.map((image, index) => (
+        {images.map((image, index) => (
+          <div
+            key={image.src}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === activeIndex ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <picture>
+              {"srcSetDesktop" in image && image.srcSetDesktop && (
+                <source media="(min-width: 1024px)" srcSet={image.srcSetDesktop} />
+              )}
+              {"srcSetTablet" in image && image.srcSetTablet && (
+                <source media="(min-width: 640px)" srcSet={image.srcSetTablet} />
+              )}
               <img
-                key={image.src}
                 src={image.src}
                 alt={image.alt}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
-                  index === activeIndex ? "opacity-100 animate-slow-zoom" : "opacity-0"
+                className={`w-full h-full object-cover ${
+                  index === activeIndex ? "animate-slow-zoom" : ""
                 }`}
               />
-            ))}
-          </>
-        )}
+            </picture>
+          </div>
+        ))}
         <div
           className={`absolute inset-0 bg-gradient-to-b transition-opacity duration-500 ${
             isDark
@@ -92,7 +113,12 @@ export default function Hero() {
         <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-white font-light leading-tight mb-6 animate-fade-in-up">
           {t.hero.title1}
           <br />
-          <span className="italic text-gold-200">{t.hero.title2}</span>
+          <span
+            key={`${wordIndex}-${t.hero.title2.split(" ")[0]}`}
+            className="inline-block italic text-gold-200 animate-fade-in"
+          >
+            {t.hero.title2.split(" ")[0]} {t.hero[HERO_WORDS_KEYS[wordIndex]]}
+          </span>
         </h1>
         <p className="text-white/85 text-lg md:text-xl font-light leading-relaxed max-w-xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
           {t.hero.subtitle}
