@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { SUBMIT_APPOINTMENT_URL, VITE_SUPABASE_ANON_KEY } from "@/lib/supabase";
+import {
+  SUBMIT_APPOINTMENT_URL,
+  VITE_SUPABASE_ANON_KEY,
+  isSupabaseConfigured,
+} from "@/lib/supabase";
 import { serviceOptions } from "@/data/services";
 import { useReveal } from "@/hooks/useReveal";
 import { useTurnstile } from "@/hooks/useTurnstile";
@@ -27,6 +31,11 @@ export default function ContactForm() {
     // is still sent so the server can enforce its own policy. A broken
     // widget (e.g. domain allowlist mismatch) must not block submission,
     // the server verifies tokens when its policy requires them.
+    if (!isSupabaseConfigured()) {
+      setStatus("error");
+      setErrorMsg(t.form.genericError);
+      return;
+    }
     if (turnstileState === "loading") {
       setStatus("error");
       setErrorMsg(t.form.turnstileLoading);

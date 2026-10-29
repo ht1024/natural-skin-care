@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import ContactFormErrorBoundary from "@/components/ContactFormErrorBoundary";
 import { LanguageProvider } from "@/context/LanguageContext";
 
 const ContactBanner = lazy(() => import("@/components/ContactBanner"));
@@ -56,13 +57,15 @@ function App() {
           <Waxing />
         </Suspense>
         <section id="contact" ref={contactRef} className="py-20 md:py-28 bg-cream-50">
-          <Suspense fallback={<div className="min-h-[40vh]" aria-hidden="true" />}>
-            {showContactForm ? (
-              <ContactForm />
-            ) : (
-              <div className="min-h-[40vh]" aria-hidden="true" />
-            )}
-          </Suspense>
+          <ContactFormErrorBoundary>
+            <Suspense fallback={<div className="min-h-[40vh]" aria-hidden="true" />}>
+              {showContactForm ? (
+                <ContactForm />
+              ) : (
+                <div className="min-h-[40vh]" aria-hidden="true" />
+              )}
+            </Suspense>
+          </ContactFormErrorBoundary>
         </section>
         <Suspense fallback={null}>
           <Footer />
