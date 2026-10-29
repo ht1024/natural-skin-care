@@ -81,6 +81,11 @@ Secrets (Turnstile secret key, Resend API key, notification email) live in Supab
 
 ## Deployment Notes
 
+- **Deploy path:** push to `main` → GitHub Actions (`.github/workflows/deploy.yml`) builds with Vite, syncs `dist/` to S3, then invalidates CloudFront. Do not delete or empty that workflow file — without it, pushes stop going live.
+- Treat `.github/workflows/deploy.yml` as production infrastructure. Do not remove it in “cleanup” or “remove old site” commits.
+- Hero images are stored in S3 only (`public/images/` is gitignored); the deploy job syncs `dist/` with `--exclude "images/*"` so those files are not wiped.
+- Optional hardening: add a branch protection rule and/or a `CODEOWNERS` entry so changes to `.github/workflows/` require review.
+- After any “remove old files” PR merges, confirm the next `main` push still shows a **Deploy static site to S3** run under GitHub Actions.
 - Canonical URL: `https://naturalskincaresa.com/` (set via `<link rel="canonical">` in `index.html`).
 - Hero images are served responsively via `<picture>` with separate desktop/tablet/mobile sources.
 - The `referrer` meta is set to `no-referrer`.
